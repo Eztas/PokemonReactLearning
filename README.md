@@ -1,3 +1,35 @@
+# Git Command (ローカルで作成したフォルダをリモートに保存)
+
+```
+git init
+git add .
+git commit -m "initial comment"
+git remote add origin https://github.com/Eztas/PokemonReactLearning.git
+git push -u origin main
+```
+
+`git init`で初期化をする
+
+`git add .`で全てのコミット内容をステージに上げる
+
+`git commit -m "コミットメッセージ"`でコミット, -mのコマンドオプションでメッセージを付与可能
+
+`git remote add`でリモートのリポジトリに追加すること示唆する
+
+`origin`はリモートリポジトリの「名前」を指す, 慣習的にoriginとしている
+
+`https://github.com/Eztas/PokemonReactLearning.git`
+でoriginという名前のリポジトリの場所(URL)を示す
+
+`git push -u origin main`で、ローカルの`main`ブランチの内容を`origin`という名前のリモートリポジトリの`main`ブランチにプッシュするというもの
+
+`-u`は`--set-upstream`の略で、これをつけると
+今後、オプションをつけなくても
+ローカルの`main`とリモートの`main`をトラッキングを設定し、今後の動作を簡略化することができる(`git push`だけで勝手にpushされる等)
+
+# 記録
+2025/02/08 スタート
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
