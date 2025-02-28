@@ -1,5 +1,6 @@
 # Git Command (ローカルで作成したフォルダをリモートに保存)
 
+## ローカルで作成したリポジトリをリモートのリポジトリに移行
 ```
 git init
 git add .
@@ -26,6 +27,17 @@ git push -u origin main
 `-u`は`--set-upstream`の略で、これをつけると
 今後、オプションをつけなくても
 ローカルの`main`とリモートの`main`をトラッキングを設定し、今後の動作を簡略化することができる(`git push`だけで勝手にpushされる等)
+
+## ローカルやリモートのブランチの削除
+
+```
+git branch -d give_prop
+git push origin --delete give_prop
+```
+
+上がローカルのブランチ削除
+
+下がリモートのブランチ削除
 
 # 記録
 2025/02/08 スタート
@@ -100,3 +112,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# 参考文献
+
+[https://qiita.com/hato_code/items/e75f215ef2d5191341dc](https://qiita.com/hato_code/items/e75f215ef2d5191341dc)
+
+参考文献通り、まずjsとjsxで進め、次の段階にtsとtsxでの実装を試みる
