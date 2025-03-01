@@ -1,5 +1,5 @@
 // 仮でデータを作成する
-const pokemon = [
+const pokemons = [
     {
       id: 1,
       name: "フシギダネ",
@@ -19,4 +19,4 @@ const pokemon = [
       type: "くさ"
     },
 ]
-export default pokemon;
+export default pokemons;
