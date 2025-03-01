@@ -7,7 +7,7 @@ import React from "react";
 // 親から引数でid, name, image, typeを受け取り、 それをポケモン1体の情報として表示する
 const PokemonThumbnails = ({ id, name, image, type }) => {
   return (
-    <div>
+    <div className="thumb-container grass">
       <div className="number">
         <small>#0{id}</small>
       </div>
