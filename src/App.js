@@ -1,25 +1,26 @@
 import './App.css';
 import PokemonThumbnails from './PokemonThumbnails';
-
-// 仮でデータを作成する
-const pokemon = {
-  id: 1,
-  name: "フシギダネ",
-  image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-  type: "くさ"
-}
+import pokemons from './Pokemon';
 
 function App() {
   return (
-    <div className="App">
-      <PokemonThumbnails 
-        id={pokemon.id}
-        name={pokemon.name}
-        image={pokemon.image}
-        type={pokemon.type}      
-      />
+    <div className="app-container">
+      <h1>ポケモン図鑑</h1>
+      <div className='pokemon-container'>
+        <div className='all-container'>
+        {/* map関数で端的にポケモンを複数分表示 */}
+          {pokemons.map((pokemon, index) => (
+            <PokemonThumbnails
+              id={pokemon.id}
+              name={pokemon.name}
+              image={pokemon.image}
+              type={pokemon.type} 
+            />
+          ))}
+        </div>
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;

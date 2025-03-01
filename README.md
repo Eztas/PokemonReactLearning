@@ -40,7 +40,8 @@ git push origin --delete give_prop
 下がリモートのブランチ削除
 
 # 記録
-2025/02/08 スタート
+2025/02/28 スタート
+2025/03/01 props, アロー関数, map
 
 # Getting Started with Create React App
 
@@ -127,3 +128,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 [https://qiita.com/hato_code/items/e75f215ef2d5191341dc](https://qiita.com/hato_code/items/e75f215ef2d5191341dc)
 
 参考文献通り、まずjsとjsxで進め、次の段階にtsとtsxでの実装を試みる
+
+[https://qiita.com/rio_threehouse/items/7632f5a593cf218b9504](https://qiita.com/rio_threehouse/items/7632f5a593cf218b9504)
+
+propsとstate, 今後混同しそう
