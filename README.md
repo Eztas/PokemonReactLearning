@@ -127,3 +127,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 [https://qiita.com/hato_code/items/e75f215ef2d5191341dc](https://qiita.com/hato_code/items/e75f215ef2d5191341dc)
 
 参考文献通り、まずjsとjsxで進め、次の段階にtsとtsxでの実装を試みる
+
+[https://qiita.com/rio_threehouse/items/7632f5a593cf218b9504](https://qiita.com/rio_threehouse/items/7632f5a593cf218b9504)
+
+propsとstate, 今後混同しそう
