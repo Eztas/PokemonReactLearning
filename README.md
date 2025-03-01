@@ -50,6 +50,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm install` ###
+node_moduleなどのgitignoreで隠されるフォルダやファイルなどが
+GitHubのリモートリポジトリにはない.
+
+そのため, リモートリポジトリの内容をただ取り込むだけでは実行できないので,
+`npm install`を実行することで, `package.json`に基づいた依存関係をインストール.
+
+(依存関係 = 動作をする上で必要な外部ライブラリやモジュール)
+
 ### `npm start`
 
 Runs the app in the development mode.\
