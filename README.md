@@ -40,7 +40,8 @@ git push origin --delete give_prop
 下がリモートのブランチ削除
 
 # 記録
-2025/02/08 スタート
+2025/02/28 スタート
+2025/03/01 propsなど
 
 # Getting Started with Create React App
 
