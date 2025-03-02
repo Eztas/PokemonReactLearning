@@ -67,8 +67,6 @@ Reactでは関数コンポーネントが、状態（state）やプロップ（p
 そうしないと、最新の情報がUIで表示されないため、UXが悪化
 
 ## useEffect
-useEffectを使ってAPIからデータを取得
-
 useEffectを使わないとそのコードが毎回実行され、不要なAPI呼び出しが増えてパフォーマンスが悪化
 
 イベントリスナ系でも、長時間余計に動作
@@ -76,6 +74,8 @@ useEffectを使わないとそのコードが毎回実行され、不要なAPI�
 そのため、useEffectで関数の実行頻度やタイミングを制御
 
 第2引数に空の配列を渡すことで、初回のみ実行されるように設定
+
+つまり、あまり何回も実行したくないことはuseEffectで行うようにする
 
 (useEffect)[https://ja.react.dev/reference/react/useEffect]
 
