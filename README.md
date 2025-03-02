@@ -39,9 +39,58 @@ git push origin --delete give_prop
 
 下がリモートのブランチ削除
 
+## ブランチ名の変更
+
+```
+git branch -m 3_pokemon_api_use_state_effect
+git push origin --delete 3_pokemon_api_use_effect
+git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api_use_state_effect
+```
+
+1行目: ローカルブランチの変更
+
+2行目: リモートにある変更前のブランチを削除
+
+3行目: ローカルとリモートのブランチを紐づける
+
 # 記録
 2025/02/28 スタート
+
 2025/03/01 props, アロー関数, map
+
+2025/03/02 useEffect, useState
+
+# React個人的まとめ
+
+## Reactの基本仕様
+
+Reactでは関数コンポーネントが、状態（state）やプロップ（props）が変わるたびに再レンダリングされる仕様
+
+そうしないと、最新の情報がUIで表示されないため、UXが悪化
+
+## useEffect
+useEffectを使わないとそのコードが毎回実行され、不要なAPI呼び出しが増えてパフォーマンスが悪化
+
+イベントリスナ系でも、長時間余計に動作
+
+そのため、useEffectで関数の実行頻度やタイミングを制御
+
+第2引数に空の配列を渡すことで、初回のみ実行されるように設定
+
+つまり、あまり何回も実行したくないことはuseEffectで行うようにする
+
+(useEffect)[https://ja.react.dev/reference/react/useEffect]
+
+## useState
+
+これで変数の値を管理することで、値が変更した時に、UI上でも変更が反映
+
+ただの変数代入でこれを実現すると、値が変更してもUIに反映されない
+
+仮にリロードで再レンダリングしても、コンポーネント関数の再実行により、変数は初期化されるため、結局変更はUIに反映されない
+
+UI上で操作をして、値が変更されるとき、値を初期化しないようにしつつ、
+UI上で変更を反映させるために使用
 
 # Getting Started with Create React App
 

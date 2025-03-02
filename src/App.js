@@ -1,8 +1,33 @@
 import './App.css';
 import PokemonThumbnails from './PokemonThumbnails';
 import pokemons from './Pokemon';
+import { useEffect, useState } from 'react';
+
+// APIからデータを取得する
+const url = "https://pokeapi.co/api/v2/pokemon";
 
 function App() {
+
+  // フック(useStateやuseEffect)は、関数コンポーネント内でのみ使用可能
+  // そうしないと、順序の保証や状態が混同し、管理しにくくなるため
+
+  // ポケモンの名前の状態管理, useStateの引数は初期値
+  const [pokemonNames, setPokemonNames] = useState([]);
+
+  // useEffectの第1引数では、アロー関数で、引数 => 結果(動作内容)で定義
+  useEffect(() => {
+    fetch(url)
+    .then((response) => response.json()) //2つのthenで非同期的にデータの処理
+    .then((data) => {   // data = response.json()の結果
+      console.log(data) // 1つ目のthenでレスポンスを受け取り, 2つ目のthenでjson形式のデータを取得
+      const names = [
+        data.results[0].name,
+        data.results[1].name,
+        data.results[2].name,
+      ]
+      setPokemonNames(names);
+    })
+  }, [])
   return (
     <div className="app-container">
       <h1>ポケモン図鑑</h1>
@@ -12,7 +37,7 @@ function App() {
           {pokemons.map((pokemon, index) => (
             <PokemonThumbnails
               id={pokemon.id}
-              name={pokemon.name}
+              name={pokemonNames[index]}
               image={pokemon.image}
               type={pokemon.type} 
             />
