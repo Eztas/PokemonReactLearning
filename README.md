@@ -58,6 +58,8 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/01 props, アロー関数, map
 
+2025/03/02 useEffect, useState
+
 # React個人的まとめ
 
 ## Reactの基本仕様
@@ -78,6 +80,17 @@ useEffectを使わないとそのコードが毎回実行され、不要なAPI�
 つまり、あまり何回も実行したくないことはuseEffectで行うようにする
 
 (useEffect)[https://ja.react.dev/reference/react/useEffect]
+
+## useState
+
+これで変数の値を管理することで、値が変更した時に、UI上でも変更が反映
+
+ただの変数代入でこれを実現すると、値が変更してもUIに反映されない
+
+仮にリロードで再レンダリングしても、コンポーネント関数の再実行により、変数は初期化されるため、結局変更はUIに反映されない
+
+UI上で操作をして、値が変更されるとき、値を初期化しないようにしつつ、
+UI上で変更を反映させるために使用
 
 # Getting Started with Create React App
 
