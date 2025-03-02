@@ -58,6 +58,27 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/01 props, アロー関数, map
 
+# React個人的まとめ
+
+## Reactの基本仕様
+
+Reactでは関数コンポーネントが、状態（state）やプロップ（props）が変わるたびに再レンダリングされる仕様
+
+そうしないと、最新の情報がUIで表示されないため、UXが悪化
+
+## useEffect
+useEffectを使ってAPIからデータを取得
+
+useEffectを使わないとそのコードが毎回実行され、不要なAPI呼び出しが増えてパフォーマンスが悪化
+
+イベントリスナ系でも、長時間余計に動作
+
+そのため、useEffectで関数の実行頻度やタイミングを制御
+
+第2引数に空の配列を渡すことで、初回のみ実行されるように設定
+
+(useEffect)[https://ja.react.dev/reference/react/useEffect]
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
