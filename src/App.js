@@ -3,13 +3,29 @@ import PokemonThumbnails from './PokemonThumbnails';
 import pokemons from './Pokemon';
 import { useEffect, useState } from 'react';
 
-// APIからデータを取得する
-const url = "https://pokeapi.co/api/v2/pokemon";
-
 function App() {
 
   // フック(useStateやuseEffect)は、関数コンポーネント内でのみ使用可能
   // そうしないと、順序の保証や状態が混同し、管理しにくくなるため
+
+  // APIからデータを取得する
+  const url = "https://pokeapi.co/api/v2/pokemon";
+  const fusigidaneUrl = "https://pokeapi.co/api/v2/pokemon/bulbasaur" // 仮データにフシギダネのデータ
+
+  // アロー関数でポケモン1体の情報を生成
+  const createPokemonObject = (pokemonUrl) => {
+    fetch(pokemonUrl)
+    .then(responce => responce.json())
+    .then(data => {
+      console.log(data);
+      // ポケモンの画像の場所
+      // - (ハイフン)にlintで自動で半角スペースが入ってしまうため、[]で対応
+      // data.sprites.other.official-artwork.front_default でも大丈夫です
+      console.log(data.sprites.other["official-artwork"].front_default);
+      // ポケモンのタイプの場所
+      console.log(data.types[0].type.name);
+    })
+  }
 
   // ポケモンの名前の状態管理, useStateの引数は初期値
   const [pokemonNames, setPokemonNames] = useState([]);
@@ -27,7 +43,9 @@ function App() {
       ]
       setPokemonNames(names);
     })
+    createPokemonObject(fusigidaneUrl);
   }, [])
+
   return (
     <div className="app-container">
       <h1>ポケモン図鑑</h1>
