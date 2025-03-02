@@ -39,6 +39,20 @@ git push origin --delete give_prop
 
 下がリモートのブランチ削除
 
+## ブランチ名の変更
+
+```
+git branch -m 3_pokemon_api_use_state_effect
+git push origin --delete 3_pokemon_api_use_effect
+git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api_use_state_effect
+```
+
+1行目: ローカルブランチの変更
+
+2行目: リモートにある変更前のブランチを削除
+
+3行目: ローカルとリモートのブランチを紐づける
+
 # 記録
 2025/02/28 スタート
 

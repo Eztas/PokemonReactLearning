@@ -1,8 +1,30 @@
 import './App.css';
 import PokemonThumbnails from './PokemonThumbnails';
 import pokemons from './Pokemon';
+import { useEffect } from 'react';
 
-// https://typescriptbook.jp/reference/functions/iife#react%E3%81%AEuseeffect%E3%81%AA%E3%81%A9%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%96%A2%E6%95%B0%E3%82%92%E5%8F%97%E3%81%91%E5%8F%96%E3%82%89%E3%81%AA%E3%81%84%E5%BC%95%E6%95%B0%E3%81%AB%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86%E3%82%92%E6%B8%A1%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88
+// APIからデータを取得する
+const url = "https://pokeapi.co/api/v2/pokemon";
+
+// useEffectを使ってAPIからデータを取得する
+// useEffectを使わないとそのコードが毎回実行され、不要なAPI呼び出しが増えてパフォーマンスが悪化
+// イベントリスナ系でも、長時間余計に動作することもある
+// Reactでは関数コンポーネントが、状態（state）やプロップ（props）が変わるたびに再レンダリングされる仕様
+// 初回レンダリング以外でも再レンダリングのたびに実行されるのが基本性能となっている
+// そうしないと、最新の情報をがUIで表示されないため、UXが悪化する
+// そのため、useEffectで関数の実行頻度やタイミングを制御する
+
+// 第2引数に空の配列を渡すことで、初回のみ実行されるように設定
+// https://ja.react.dev/reference/react/useEffect
+
+// useEffectの第1引数では、アロー関数で、引数 => 結果(動作内容)で定義
+useEffect(() => {
+  fetch(url)
+  .then((response) => response.json()) //2つのthenで非同期的にデータの処理
+  .then((data) => {   // data = response.json()の結果
+    console.log(data) // 1つ目のthenでレスポンスを受け取り, 2つ目のthenでjson形式のデータを取得
+  })
+}, [])
 
 function App() {
   return (
