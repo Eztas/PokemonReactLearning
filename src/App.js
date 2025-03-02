@@ -7,7 +7,8 @@ function App() {
   // そうしないと、順序の保証や状態が混同し、管理しにくくなるため
 
   // パラメータにlimitを設定し、20件取得する
-  const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon?limit=20");
+  const LIMIT_NUMBER = 20;
+  const [url, setUrl] = useState(`https://pokeapi.co/api/v2/pokemon?limit=${LIMIT_NUMBER}`); // APIのURLを格納
   // ポケモンのデータを格納する
   const [pokemons, setPokemons] = useState([]);
 
@@ -26,8 +27,8 @@ function App() {
   const createPokemonObject = (pokemons) => {
     // アロー関数で, 配列.forEach (引数 => 結果(動作内容))で定義
     pokemons.forEach ((pokemon) => {
-      const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`;
-      fetch(pokemonUrl)
+      const pokemonUrl = pokemon.url;
+      fetch(pokemonUrl) // ただ単にfetchをしているだけだと、非同期処理のため、データ取得順が一意ではない
       .then(res => res.json())
       .then(data => {
         // ポケモン1体の情報に関するオブジェクト生成
@@ -43,7 +44,6 @@ function App() {
         setPokemons(currentPokemonData => [...currentPokemonData, newPokemonData]);
       })
     })
-    setPokemons(currentPokemonData => currentPokemonData.sort((a, b) => a.id - b.id));
   }
 
   // useEffectの第1引数では、アロー関数で、引数 => 結果(動作内容)で定義
