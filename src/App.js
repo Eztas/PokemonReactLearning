@@ -12,12 +12,15 @@ function App() {
   // ポケモンのデータを格納する
   const [pokemons, setPokemons] = useState([]);
 
+  // 2回呼び出されている?
+  // 本来useEffectで、1回だけのはず
   const getAllPokemons = () => {
     fetch(url)
       .then(res => res.json()) 
       .then(data => {              // data = res.json()
+        console.log("Initial Pokémon list:", data.results);
         createPokemonObject(data.results); // APIで取得したポケモンの情報に関するオブジェクト生成
-        setUrl(data.next); // 次の20件(21件目から40件目)をURLにセットする
+        //setUrl(data.next); // 次の20件(21件目から40件目)をURLにセットする
       })
   }
 
@@ -37,17 +40,22 @@ function App() {
           image: data.sprites.other["official-artwork"].front_default, // ポケモンの画像
           type: data.types[0].type.name // ポケモンのタイプ
         }
+        console.log("Adding Pokémon:", newPokemonData.id, newPokemonData.name);
 
         // forEachで1-20件目のポケモンのデータを格納
         // スプレッド構文で、現在のポケモンデータを展開して、新しいポケモンデータを追加する形で状態更新
-        setPokemons(currentPokemonData => [...currentPokemonData, newPokemonData]);
+        // 非同期であり、順番が一意ではないのでsortしながら追加
+        setPokemons(currentPokemonData => [...currentPokemonData, newPokemonData].sort((a, b) => a.id - b.id));
       })
     })
   }
 
   // useEffectの第1引数では、アロー関数で、引数 => 結果(動作内容)で定義
+  // ホットリロードが関係？, 1回目のレンダリング時にuseEffectが2回呼び出されている
   useEffect(() => {
+    console.log('useeffect before');
     getAllPokemons();
+    console.log('useeffect after');
   }, []) // API元の内容変化時の再レンダリングは今回無視, そのため[]を第2引数
 
   return (
@@ -57,6 +65,7 @@ function App() {
         <div className='all-container'>
           {pokemons.map((pokemon, index) => ( // 今はまだallPokemonsではなく仮データのpokemonsを使用
             <PokemonThumbnails
+              key={pokemon.id} // keyを設定し, 警告を回避
               id={pokemon.id}
               name={pokemon.name}
               image={pokemon.image}
