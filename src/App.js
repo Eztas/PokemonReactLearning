@@ -57,9 +57,7 @@ function App() {
 
 
   useEffect(() => {
-    console.log('useeffect before');
     getAllPokemons();
-    console.log('useeffect after');
   }, []) // API元の内容変化時の再レンダリングは今回無視, そのため[]を第2引数
 
   return (
