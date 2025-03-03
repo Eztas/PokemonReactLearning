@@ -16,7 +16,6 @@ function App() {
     fetch(url)
       .then(res => res.json()) 
       .then(data => {              // data = res.json()
-        //console.log('1'+data.results); // データの確認
         createPokemonObject(data.results); // APIで取得したポケモンの情報に関するオブジェクト生成
         setUrl(data.next); // 次の20件(21件目から40件目)をURLにセットする
       })

@@ -92,6 +92,33 @@ useEffectを使わないとそのコードが毎回実行され、不要なAPI�
 UI上で操作をして、値が変更されるとき、値を初期化しないようにしつつ、
 UI上で変更を反映させるために使用
 
+## fetchとpromise
+
+fetchメソッドはそもそもpromiseを返す(待機中, 成功、失敗のいずれか)
+
+thenを使うことで、ネストが深くならずに、直線的に処理できるため、可読性の高いコードに
+
+Promiseを使用
+```
+  fetch("https://api.example.com/data")
+    .then((response) => response.json())
+    .then((data) => setData(data))
+```
+
+Promiseを未使用(async関数とawait)
+```
+  const fetchData = async () => {
+    const response = await fetch("https://api.example.com/data");
+    const data = await response.json();
+    setData(data);
+  };
+  fetchData();
+```
+
+promiseオブジェクトを使うことで、順番にfetchなどの非同期処理ができる
+
+[https://qiita.com/hisashi_matsui/items/d8457284e9219f57ca6c](https://qiita.com/hisashi_matsui/items/d8457284e9219f57ca6c)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
