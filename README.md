@@ -60,6 +60,8 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/02 useEffect, useState
 
+2025/03/03 useEffectを使っているのに、2回実行される問題に対応
+
 # React個人的まとめ
 
 ## Reactの基本仕様

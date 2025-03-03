@@ -20,7 +20,7 @@ function App() {
       .then(data => {              // data = res.json()
         console.log("Initial Pokémon list:", data.results);
         createPokemonObject(data.results); // APIで取得したポケモンの情報に関するオブジェクト生成
-        //setUrl(data.next); // 次の20件(21件目から40件目)をURLにセットする
+        setUrl(data.next); // 次の20件(21件目から40件目)をURLにセットする
       })
   }
 
@@ -52,6 +52,10 @@ function App() {
 
   // useEffectの第1引数では、アロー関数で、引数 => 結果(動作内容)で定義
   // ホットリロードが関係？, 1回目のレンダリング時にuseEffectが2回呼び出されている
+
+  // React Strict Modeは、開発環境でコンポーネントを2回レンダリングすることで、潜在的な問題を検出します。これにより、useEffectが2回実行され、getAllPokemonsも2回呼び出されます。ログから「useeffect before」「useeffect after」が2回表示されていることが確認できます。
+
+
   useEffect(() => {
     console.log('useeffect before');
     getAllPokemons();
