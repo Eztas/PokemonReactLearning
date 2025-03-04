@@ -15,7 +15,6 @@ function App() {
     fetch(url)
       .then(res => res.json()) 
       .then(data => {              // data = res.json()
-        console.log("Initial Pokémon list:", data.results);
         createPokemonObject(data.results); // APIで取得したポケモンの情報に関するオブジェクト生成
         setUrl(data.next); // 次の20件(21件目から40件目)をURLにセットする
       })
@@ -37,7 +36,6 @@ function App() {
           image: data.sprites.other["official-artwork"].front_default, // ポケモンの画像
           type: data.types[0].type.name // ポケモンのタイプ
         }
-        console.log("Adding Pokémon:", newPokemonData.id, newPokemonData.name);
 
         // forEachで1-20件目のポケモンのデータを格納
         // スプレッド構文で、現在のポケモンデータを展開して、新しいポケモンデータを追加する形で状態更新
@@ -67,6 +65,13 @@ function App() {
             />
           ))}
         </div>
+        {/*getAllPokemons()で関数を渡すと無限に実行される*/}
+        {/*onClick={getAllPokemons} は関数の参照を渡すだけ*/}
+        {/*onClick={getAllPokemons()} は関数の返り値を渡す, 返り値を渡すために実行する*/}
+        {/*実行される->ポケモン情報追加->再レンダリング->また{}内実行->返り値を返そうと実行*/}
+        <button className='load-more' onClick={getAllPokemons}>
+          もっとみる！
+        </button>
       </div>
     </div>
   )
