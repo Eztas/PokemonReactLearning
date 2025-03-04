@@ -14,6 +14,18 @@ function App() {
 
   // 2回呼び出されている?
   // 本来useEffectで、1回だけのはず
+  // 望ましい解消案は、「useEffectを一回だけ走らせる」ではなく、「2回のマウントでもちゃんと正しく動くコードを書く」こと
+  // 公式でも提唱している
+
+  // こういう力業もある
+  // if (process.env.NODE_ENV === "development") {
+  //   if (refFirstRef.current) {
+  //     refFirstRef.current = false;
+  //     return;
+  //   }
+  // }
+
+  // クリーンアップ関数を書く https://qiita.com/Akihiro0711/items/dae74e3e73063a80b249
   const getAllPokemons = () => {
     fetch(url)
       .then(res => res.json()) 
