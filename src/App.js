@@ -72,10 +72,6 @@ function App() {
             />
           ))}
         </div>
-        {/*getAllPokemons()で関数を渡すと無限に実行される*/}
-        {/*onClick={getAllPokemons} は関数の参照を渡すだけ*/}
-        {/*onClick={getAllPokemons()} は関数の返り値を渡す, 返り値を渡すために実行する*/}
-        {/*実行される->ポケモン情報追加->再レンダリング->また{}内実行->返り値を返そうと実行*/}
         {isReloading ? (
           <div className='load-more'>Now Loading…</div>
         ): (
