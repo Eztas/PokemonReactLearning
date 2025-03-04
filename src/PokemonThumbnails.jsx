@@ -5,12 +5,13 @@ import React from "react";
 
 // 親コンポーネントから子コンポーネントに引数などを介してデータを渡すための仕組み=propsの作成
 // 親から引数でid, name, image, typeを受け取り、 それをポケモン1体の情報として表示する
-const PokemonThumbnails = ({ id, name, image, type }) => {
+const PokemonThumbnails = ({ id, name, iconImage, image, type }) => {
   return (
     <div className="thumb-container grass">
       <div className="number">
         <small>#0{id}</small>
       </div>
+      <img src={iconImage} alt={name} className="icon-image" />
       <img src={image} alt={name} />
       <div className="detail-wrapper">
         <h4>{name}</h4>
