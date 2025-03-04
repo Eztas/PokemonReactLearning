@@ -48,9 +48,6 @@ function App() {
   }
 
   // useEffectの第1引数では、アロー関数で、引数 => 結果(動作内容)で定義
-  // ホットリロードが関係？, 1回目のレンダリング時にuseEffectが2回呼び出されている
-
-  // React Strict Modeは、開発環境でコンポーネントを2回レンダリングすることで、潜在的な問題を検出します。これにより、useEffectが2回実行され、getAllPokemonsも2回呼び出されます。ログから「useeffect before」「useeffect after」が2回表示されていることが確認できます。
   useEffect(() => {
     getAllPokemons();
   }, []) // API元の内容変化時の再レンダリングは今回無視, そのため[]を第2引数
@@ -60,7 +57,7 @@ function App() {
       <h1>ポケモン図鑑</h1>
       <div className='pokemon-container'>
         <div className='all-container'>
-          {pokemons.map((pokemon, index) => ( // 今はまだallPokemonsではなく仮データのpokemonsを使用
+          {pokemons.map((pokemon, index) => (
             <PokemonThumbnails
               key={pokemon.id} // keyを設定し, 警告を回避
               id={pokemon.id}

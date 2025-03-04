@@ -5,7 +5,7 @@ import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  //<React.StrictMode>
+  //<React.StrictMode> // 2回useEffectが行われる要因のため、ひとまず行わない
     <App />
   //</React.StrictMode>
 );
