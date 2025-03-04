@@ -6,26 +6,11 @@ function App() {
   // フック(useStateやuseEffect)は、関数コンポーネント内でのみ使用可能
   // そうしないと、順序の保証や状態が混同し、管理しにくくなるため
 
-  // パラメータにlimitを設定し、20件取得する
-  const LIMIT_NUMBER = 20;
+  const LIMIT_NUMBER = 20; // パラメータにlimitを設定し、20件取得する
+
   const [url, setUrl] = useState(`https://pokeapi.co/api/v2/pokemon?limit=${LIMIT_NUMBER}`); // APIのURLを格納
-  // ポケモンのデータを格納する
-  const [pokemons, setPokemons] = useState([]);
+  const [pokemons, setPokemons] = useState([]); // ポケモンのデータを格納する
 
-  // 2回呼び出されている?
-  // 本来useEffectで、1回だけのはず
-  // 望ましい解消案は、「useEffectを一回だけ走らせる」ではなく、「2回のマウントでもちゃんと正しく動くコードを書く」こと
-  // 公式でも提唱している
-
-  // こういう力業もある
-  // if (process.env.NODE_ENV === "development") {
-  //   if (refFirstRef.current) {
-  //     refFirstRef.current = false;
-  //     return;
-  //   }
-  // }
-
-  // クリーンアップ関数を書く https://qiita.com/Akihiro0711/items/dae74e3e73063a80b249
   const getAllPokemons = () => {
     fetch(url)
       .then(res => res.json()) 
@@ -66,8 +51,6 @@ function App() {
   // ホットリロードが関係？, 1回目のレンダリング時にuseEffectが2回呼び出されている
 
   // React Strict Modeは、開発環境でコンポーネントを2回レンダリングすることで、潜在的な問題を検出します。これにより、useEffectが2回実行され、getAllPokemonsも2回呼び出されます。ログから「useeffect before」「useeffect after」が2回表示されていることが確認できます。
-
-
   useEffect(() => {
     getAllPokemons();
   }, []) // API元の内容変化時の再レンダリングは今回無視, そのため[]を第2引数
