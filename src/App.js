@@ -1,5 +1,7 @@
 import PokemonThumbnails from './PokemonThumbnails';
 import { useEffect, useState } from 'react';
+import pokemonNameJson from "./api/pokemonNameJaEn.json";
+import pokemonTypeJson from "./api/pokemonTypeJaEn.json";
 
 function App() {
 
