@@ -152,6 +152,31 @@ Providerで囲うことで、他ファイルでも共有できるようにする
 
 そして、Contextを使うときはuseContextを使って、共有されている状態を受け取る
 
+```
+export const Context = createContext();
+```
+
+これで、exportにより、外部ファイルからでもContextを使えるようにする
+
+```
+const {…} = useContext(Context);
+```
+
+exportされたContextを引数にしながら、useContextを使うことで、
+使いたい状態を受け取ることができる
+
+```
+<Context.Provider value={…}>
+  {children}
+</Context.Provider>
+```
+
+また、Contextを使用できる範囲は、このContext.Providerの中の子コンポーネントでだけである
+
+そして、valueに入れた値を使うことができる
+
+主にこの3要素が必要になる
+
 ## fetchとpromise
 
 fetchメソッドはそもそもpromiseを返す(待機中, 成功、失敗のいずれか)
