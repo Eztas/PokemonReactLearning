@@ -1,17 +1,16 @@
 import PokemonThumbnails from './PokemonThumbnails';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import pokemonNameJaEnJson from "./api/pokemonNameJaEn.json";
 import pokemonTypeJson from "./api/pokemonType.json";
+import { PokemonContext } from './PokemonProvider';
 
 function App() {
 
   // フック(useStateやuseEffect)は、関数コンポーネント内でのみ使用可能
   // そうしないと、順序の保証や状態が混同し、管理しにくくなるため
 
-  const LIMIT_NUMBER = 20; // パラメータにlimitを設定し、20件取得する
+  const {pokemons, setPokemons, url, setUrl} = useContext(PokemonContext); // ポケモンのデータを格納する
 
-  const [url, setUrl] = useState(`https://pokeapi.co/api/v2/pokemon?limit=${LIMIT_NUMBER}`); // APIのURLを格納
-  const [pokemons, setPokemons] = useState([]); // ポケモンのデータを格納する
   const [isReloading, setIsReloading] = useState(false); // リロード中かどうかの状態を格納
 
   const translatePokemonName = (pokemonNameEn, pokemonTypeEn) => {
