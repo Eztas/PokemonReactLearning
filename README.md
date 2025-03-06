@@ -66,7 +66,7 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/04~06 日本語対応, jsonデータの扱い
 
-2025/03/06 デプロイ前のリファクタリング
+2025/03/06 デプロイ前のリファクタリング(useContextによるデータ共有, 日本語と英語版の実装)
 
 # React個人的まとめ
 
