@@ -1,5 +1,6 @@
 import {useState, createContext} from 'react';
 import JapaneseApp from './JapaneseApp';
+import EnglishApp from './EnglishApp';
 
 export const PokemonContext = createContext();
 
@@ -11,7 +12,7 @@ function PokemonProvider() {
 
     return (
         <PokemonContext.Provider value={{ pokemons, setPokemons, url, setUrl }}>
-            <JapaneseApp />
+            <EnglishApp />
         </PokemonContext.Provider>
     )
 }
