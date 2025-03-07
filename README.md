@@ -64,7 +64,9 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/04 ポケモン情報追加機能, onclickの際の関数の扱い
 
-2025/03/04 日本語対応, jsonデータの扱い
+2025/03/04~06 日本語対応, jsonデータの扱い
+
+2025/03/06 デプロイ前のリファクタリング(useContextによるデータ共有, 日本語と英語版の実装)
 
 # React個人的まとめ
 
@@ -104,6 +106,14 @@ onClick={関数名()} は関数の返り値を渡す, その返り値を渡す�
 
 関数オブジェクトだけを渡すことで、トリガー発生時に関数が実行されるようになる
 
+## フック
+
+関数のトップレベル(ループ、条件文など)で呼ばない
+
+グローバルで呼ばない
+
+状態管理にして不具合が起こる可能性があるため
+
 ## useEffect
 useEffectを使わないとそのコードが毎回実行され、不要なAPI呼び出しが増えてパフォーマンスが悪化
 
@@ -129,6 +139,57 @@ useEffectを使わないとそのコードが毎回実行され、不要なAPI�
 
 UI上で操作をして、値が変更されるとき、値を初期化しないようにしつつ、
 UI上で変更を反映させるために使用
+
+## useContext
+
+バケツリレー(propsに値を入れて、ファイル間に値を渡す手法)をせずに、データを渡すことが可能
+
+一元管理も容易
+
+useStateなどの変化される値は、基本的にuseContextで管理して、バケツリレーを防げるようにした方が良い
+
+Providerで囲うことで、他ファイルでも共有できるようにする
+
+そして、Contextを使うときはuseContextを使って、共有されている状態を受け取る
+
+```
+export const Context = createContext();
+```
+
+これで、exportにより、外部ファイルからでもContextを使えるようにする
+
+```
+const {…} = useContext(Context);
+```
+
+exportされたContextを引数にしながら、useContextを使うことで、
+使いたい状態を受け取ることができる
+
+```
+<Context.Provider value={…}>
+  {children}
+</Context.Provider>
+```
+
+また、Contextを使用できる範囲は、このContext.Providerの中の子コンポーネントでだけである
+
+そして、valueに入れた値を使うことができる
+
+主にこの3要素が必要になる
+
+## BrowserRouter, Routes, Route, Link
+
+BrowserRouterでのオーバーラップが必要
+
+BrowserRouterからのContextがLinkに必要である
+
+BrowserRouterがProvider, 
+Routes, RouteがcreateContext, 
+LinkがuseContextに近い形で使用できる
+
+親コンポーネントで、まず初期のページ遷移先,
+次のページ遷移先を用意しておくことで、
+子コンポーネントではLinkのみでページを移動が実装できる
 
 ## fetchとpromise
 

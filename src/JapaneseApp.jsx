@@ -1,17 +1,18 @@
 import PokemonThumbnails from './PokemonThumbnails';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { Link } from "react-router-dom";
 import pokemonNameJaEnJson from "./api/pokemonNameJaEn.json";
 import pokemonTypeJson from "./api/pokemonType.json";
+import { PokemonContext } from './PokemonProvider';
 
-function App() {
+// https://alterbo.jp/blog/hisshi2-2012/
+
+function JapaneseApp() {
 
   // フック(useStateやuseEffect)は、関数コンポーネント内でのみ使用可能
   // そうしないと、順序の保証や状態が混同し、管理しにくくなるため
 
-  const LIMIT_NUMBER = 20; // パラメータにlimitを設定し、20件取得する
-
-  const [url, setUrl] = useState(`https://pokeapi.co/api/v2/pokemon?limit=${LIMIT_NUMBER}`); // APIのURLを格納
-  const [pokemons, setPokemons] = useState([]); // ポケモンのデータを格納する
+  const {pokemons, setPokemons, url, setUrl} = useContext(PokemonContext); // ポケモンのデータを格納する
   const [isReloading, setIsReloading] = useState(false); // リロード中かどうかの状態を格納
 
   const translatePokemonName = (pokemonNameEn, pokemonTypeEn) => {
@@ -46,12 +47,12 @@ function App() {
         // ポケモン1体の情報に関するオブジェクト生成
         const newPokemonData = {
           id: data.id, // ポケモンの番号
-          //name: data.name, // ポケモンの名前
-          name: pokemonJa.name, // ポケモンの日本名
+          nameJa: pokemonJa.name, // ポケモンの日本名
+          nameEn: data.name, // ポケモンの英語名
           iconImage: data.sprites.other.dream_world.front_default, // ホバー時のポケモンのアイコン画像
           image: data.sprites.other["official-artwork"].front_default, // ポケモンの画像
-          //type: data.types[0].type.name // ポケモンのタイプ
-          type: pokemonJa.type // ポケモンのタイプ
+          typeJa: pokemonJa.type, // ポケモンのタイプ(日本語)
+          typeEn: data.types[0].type.name // ポケモンのタイプ(英語)
         }
 
         // forEachで1-20件目のポケモンのデータを格納
@@ -70,16 +71,17 @@ function App() {
   return (
     <div className="app-container">
       <h1>ポケモン図鑑</h1>
+      {<Link to="/EnglishApp">英語版図鑑はこちらから</Link>}
       <div className='pokemon-container'>
         <div className='all-container'>
           {pokemons.map((pokemon, index) => (
             <PokemonThumbnails
               key={pokemon.id} // keyを設定し, 警告を回避
               id={pokemon.id}
-              name={pokemon.name}
+              name={pokemon.nameJa}
               iconImage={pokemon.iconImage}
               image={pokemon.image}
-              type={pokemon.type} 
+              type={pokemon.typeJa} 
             />
           ))}
         </div>
@@ -95,4 +97,4 @@ function App() {
   )
 }
 
-export default App;
+export default JapaneseApp;
