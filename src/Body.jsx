@@ -4,8 +4,8 @@ import { PokemonContext } from './PokemonProvider';
 
 // コンテキスト化しておくと、コンポーネント化するときに楽になる
 
-function Body({ language }) {
-    const {pokemons} = useContext(PokemonContext); // ポケモンのデータを格納する
+function Body() {
+    const {pokemons, language} = useContext(PokemonContext); // ポケモンのデータを格納する
     return (
         <div className='all-container'>
           {pokemons.map((pokemon, index) => (

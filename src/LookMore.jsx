@@ -11,16 +11,22 @@ import { PokemonContext } from './PokemonProvider';
 // getAllPokemons, getAllPokemons.getAllPokemonsか
 // {getAllPokemons}, getAllPokemonsの2択
 function LookMore({getAllPokemons}) {
-    const {isReloading} = useContext(PokemonContext);
+    const {isReloading, language} = useContext(PokemonContext);
 
     return (
         <div className="look-more">
             {isReloading ? (
                 <div className='load-more'>Now Loading…</div>
             ): (
-                <button className='load-more' onClick={getAllPokemons}>
-                    Look More Pokemons！
-                </button>
+                language === 'en' ? (
+                    <button className='load-more' onClick={getAllPokemons}>
+                        Look More Pokemons！
+                    </button>
+                ) : (
+                    <button className='load-more' onClick={getAllPokemons}>
+                        もっと見る！
+                    </button>
+                )
             )}
         </div>
     )

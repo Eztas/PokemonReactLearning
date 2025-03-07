@@ -1,7 +1,9 @@
-import React from "react"; // フックを入れていないから、DOMを扱う場合はこのインポートが必要らしい
+import { useContext } from 'react';
+import { PokemonContext } from './PokemonProvider';
 import { Link } from "react-router-dom";
 
-function Header({ language }) {
+function Header() {
+  const {language} = useContext(PokemonContext); // ポケモンのデータを格納する
   return (
     <div>
       {language === "en" ? (

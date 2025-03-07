@@ -5,7 +5,7 @@ import { useEffect, useContext } from 'react';
 import { PokemonContext } from './PokemonProvider';
 import { createPokemonObject } from './createPokemonObject';
 
-function App({language}) {
+function App() {
 
   // フック(useStateやuseEffect)は、関数コンポーネント内でのみ使用可能
   // そうしないと、順序の保証や状態が混同し、管理しにくくなるため
@@ -35,9 +35,9 @@ function App({language}) {
 
   return (
     <div className="app-container">
-      <Header language={language}/>
+      <Header />
       <div className='pokemon-container'>
-        <Body language={language} />
+        <Body />
         <LookMore getAllPokemons={getAllPokemons} />
       </div>
     </div>
