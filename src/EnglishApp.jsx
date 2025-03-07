@@ -1,9 +1,8 @@
 import PokemonThumbnails from './PokemonThumbnails';
 import { useEffect, useState, useContext } from 'react';
 import { Link } from "react-router-dom";
-import pokemonNameJaEnJson from "./api/pokemonNameJaEn.json";
-import pokemonTypeJson from "./api/pokemonType.json";
 import { PokemonContext } from './PokemonProvider';
+import { translatePokemon } from './api/translatePokemon';
 
 function EnglishApp() {
 
@@ -12,14 +11,6 @@ function EnglishApp() {
 
   const {pokemons, setPokemons, url, setUrl} = useContext(PokemonContext); // ポケモンのデータを格納する
   const [isReloading, setIsReloading] = useState(false); // リロード中かどうかの状態を格納
-
-  const translatePokemonName = (pokemonNameEn, pokemonTypeEn) => {
-    const pokemonNameJa = pokemonNameJaEnJson.find(
-      (pokemonNameJaEn) => pokemonNameJaEn.en.toLowerCase() === pokemonNameEn
-    ).ja;
-    const pokemonTypeJa = pokemonTypeJson[pokemonTypeEn];
-    return {name: pokemonNameJa, type: pokemonTypeJa};
-  }
 
   const getAllPokemons = () => {
     setIsReloading(true); // リロード中の状態をtrueにする
@@ -41,7 +32,7 @@ function EnglishApp() {
       fetch(pokemonUrl) // ただ単にfetchをしているだけだと、非同期処理のため、データ取得順が一意ではない
       .then(res => res.json())
       .then(data => {
-        const pokemonJa = translatePokemonName(data.name, data.types[0].type.name)
+        const pokemonJa = translatePokemon(data.name, data.types[0].type.name)
         // ポケモン1体の情報に関するオブジェクト生成
         const newPokemonData = {
           id: data.id, // ポケモンの番号
