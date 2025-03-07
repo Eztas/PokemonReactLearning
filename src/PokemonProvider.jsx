@@ -1,9 +1,7 @@
 import {useState, createContext} from 'react';
-import JapaneseApp from './JapaneseApp';
-import EnglishApp from './EnglishApp';
-
 export const PokemonContext = createContext();
 
+// childrenにJapaneseAppなどの子コンポーネント関数が加えられる
 function PokemonProvider({children}) {
     const LIMIT_NUMBER = 20; // パラメータにlimitを設定し、20件取得する
     
