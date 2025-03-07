@@ -7,7 +7,7 @@ function Header({ language }) {
       {language === "en" ? (
         <div>
           <h1>Pokedex</h1>
-          <Link to="/JapaneseApp">日本語版ポケモン図鑑はこちらから</Link>
+          <Link to="/JapaneseApp">Please click here to look at Japanese Pokedex</Link>
         </div>
       ) : (
         <div>

@@ -16,9 +16,10 @@ function PokemonProvider({children}) {
     const [pokemons, setPokemons] = useState([]); // ポケモンのデータを格納する
     const [url, setUrl] = useState(`https://pokeapi.co/api/v2/pokemon?limit=${LIMIT_NUMBER}`); // APIのURLを格納
     const [isReloading, setIsReloading] = useState(false);
+    const [language, setLanguage] = useState('ja');
 
     return (
-        <PokemonContext.Provider value={{ pokemons, setPokemons, url, setUrl, isReloading, setIsReloading }}>
+        <PokemonContext.Provider value={{ pokemons, setPokemons, url, setUrl, isReloading, setIsReloading, language, setLanguage }}>
             {children}
         </PokemonContext.Provider>
     )
