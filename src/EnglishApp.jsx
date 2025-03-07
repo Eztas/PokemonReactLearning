@@ -1,5 +1,8 @@
 import PokemonThumbnails from './PokemonThumbnails';
 import { useEffect, useState, useContext } from 'react';
+import { Link } from "react-router-dom";
+import pokemonNameJaEnJson from "./api/pokemonNameJaEn.json";
+import pokemonTypeJson from "./api/pokemonType.json";
 import { PokemonContext } from './PokemonProvider';
 
 function EnglishApp() {
@@ -10,6 +13,13 @@ function EnglishApp() {
   const {pokemons, setPokemons, url, setUrl} = useContext(PokemonContext); // ポケモンのデータを格納する
   const [isReloading, setIsReloading] = useState(false); // リロード中かどうかの状態を格納
 
+  const translatePokemonName = (pokemonNameEn, pokemonTypeEn) => {
+    const pokemonNameJa = pokemonNameJaEnJson.find(
+      (pokemonNameJaEn) => pokemonNameJaEn.en.toLowerCase() === pokemonNameEn
+    ).ja;
+    const pokemonTypeJa = pokemonTypeJson[pokemonTypeEn];
+    return {name: pokemonNameJa, type: pokemonTypeJa};
+  }
 
   const getAllPokemons = () => {
     setIsReloading(true); // リロード中の状態をtrueにする
@@ -31,13 +41,16 @@ function EnglishApp() {
       fetch(pokemonUrl) // ただ単にfetchをしているだけだと、非同期処理のため、データ取得順が一意ではない
       .then(res => res.json())
       .then(data => {
+        const pokemonJa = translatePokemonName(data.name, data.types[0].type.name)
         // ポケモン1体の情報に関するオブジェクト生成
         const newPokemonData = {
           id: data.id, // ポケモンの番号
-          name: data.name, // ポケモンの英語名
+          nameJa: pokemonJa.name, // ポケモンの日本名
+          nameEn: data.name, // ポケモンの英語名
           iconImage: data.sprites.other.dream_world.front_default, // ホバー時のポケモンのアイコン画像
           image: data.sprites.other["official-artwork"].front_default, // ポケモンの画像
-          type: data.types[0].type.name // ポケモンのタイプ(英語)
+          typeJa: pokemonJa.type, // ポケモンのタイプ(日本語)
+          typeEn: data.types[0].type.name // ポケモンのタイプ(英語)
         }
 
         // forEachで1-20件目のポケモンのデータを格納
@@ -56,16 +69,17 @@ function EnglishApp() {
   return (
     <div className="app-container">
       <h1>ポケモン図鑑</h1>
+      {<Link to="/JapaneseApp">日本語版図鑑はこちらから</Link>}
       <div className='pokemon-container'>
         <div className='all-container'>
           {pokemons.map((pokemon, index) => (
             <PokemonThumbnails
               key={pokemon.id} // keyを設定し, 警告を回避
               id={pokemon.id}
-              name={pokemon.name}
+              name={pokemon.nameEn}
               iconImage={pokemon.iconImage}
               image={pokemon.image}
-              type={pokemon.type} 
+              type={pokemon.typeEn} 
             />
           ))}
         </div>
