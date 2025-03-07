@@ -1,5 +1,6 @@
 import PokemonThumbnails from './PokemonThumbnails';
-import { useEffect, useState, useContext } from 'react';
+import LookMore from './LookMore';
+import { useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
 import { PokemonContext } from './PokemonProvider';
 import { createPokemonObject } from './createPokemonObject';
@@ -49,13 +50,7 @@ function EnglishApp() {
             />
           ))}
         </div>
-        {isReloading ? (
-          <div className='load-more'>Now Loading…</div>
-        ): (
-          <button className='load-more' onClick={getAllPokemons}>
-            もっとみる！
-          </button>
-        )}
+        <LookMore getAllPokemons={getAllPokemons} />
       </div>
     </div>
   )

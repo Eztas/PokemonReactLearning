@@ -1,6 +1,6 @@
 import PokemonThumbnails from './PokemonThumbnails';
 import LookMore from './LookMore';
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
 import { PokemonContext } from './PokemonProvider';
 import { createPokemonObject } from './createPokemonObject';
@@ -13,10 +13,9 @@ function JapaneseApp() {
   const {pokemons, 
          setPokemons, 
          url, 
-         setUrl, 
-         isReloading, 
+         setUrl,  
          setIsReloading} = useContext(PokemonContext); // ポケモンのデータを格納する
-         
+
   // reloadingをuseStateで管理とかにすると、日本語ページと英語ページで競合しそうなのでここはコンポーネント化しない
   const getAllPokemons = () => {
     setIsReloading(true); // リロード中の状態をtrueにする
@@ -52,13 +51,7 @@ function JapaneseApp() {
             />
           ))}
         </div>
-        {isReloading ? (
-          <div className='load-more'>Now Loading…</div>
-        ): (
-          <button className='load-more' onClick={getAllPokemons}>
-            もっとみる！
-          </button>
-        )}
+        <LookMore getAllPokemons={getAllPokemons} />
       </div>
     </div>
   )
