@@ -193,6 +193,8 @@ LinkがuseContextに近い形で使用できる
 次のページ遷移先を用意しておくことで、
 子コンポーネントではLinkのみでページを移動が実装できる
 
+Single Page　Application…単一ページ中でコンテンツの切り替えを行うWebアプリケーション
+
 ## fetchとpromise
 
 fetchメソッドはそもそもpromiseを返す(待機中, 成功、失敗のいずれか)
