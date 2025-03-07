@@ -177,11 +177,19 @@ exportされたContextを引数にしながら、useContextを使うことで、
 
 主にこの3要素が必要になる
 
-## Link
+## BrowserRouter, Routes, Route, Link
 
 BrowserRouterでのオーバーラップが必要
 
 BrowserRouterからのContextがLinkに必要である
+
+BrowserRouterがProvider, 
+Routes, RouteがcreateContext, 
+LinkがuseContextに近い形で使用できる
+
+親コンポーネントで、まず初期のページ遷移先,
+次のページ遷移先を用意しておくことで、
+子コンポーネントではLinkのみでページを移動が実装できる
 
 ## fetchとpromise
 
