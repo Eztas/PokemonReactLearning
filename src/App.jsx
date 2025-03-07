@@ -1,6 +1,6 @@
-import PokemonThumbnails from './PokemonThumbnails';
-import LookMore from './LookMore';
 import Header from './Header';
+import Body from './Body';
+import LookMore from './LookMore';
 import { useEffect, useContext } from 'react';
 import { PokemonContext } from './PokemonProvider';
 import { createPokemonObject } from './createPokemonObject';
@@ -11,8 +11,7 @@ function App({language}) {
   // そうしないと、順序の保証や状態が混同し、管理しにくくなるため
 
   // 言語もコンテキスト化できるくない?
-  const {pokemons, 
-         setPokemons, 
+  const {setPokemons, 
          url, 
          setUrl,  
          setIsReloading} = useContext(PokemonContext); // ポケモンのデータを格納する
@@ -38,31 +37,7 @@ function App({language}) {
     <div className="app-container">
       <Header language={language}/>
       <div className='pokemon-container'>
-        <div className='all-container'>
-          {pokemons.map((pokemon, index) => (
-            // enかjaか(今回はelse)で表示を変える
-            language === 'en' ?
-            <PokemonThumbnails
-              key={pokemon.id} // keyを設定し, 警告を回避
-              id={pokemon.id}
-              name={pokemon.nameEn}
-              iconImage={pokemon.iconImage}
-              image={pokemon.image}
-              type={pokemon.typeEn} 
-              colorType={pokemon.typeEn}
-            />
-            :
-            <PokemonThumbnails
-              key={pokemon.id} // keyを設定し, 警告を回避
-              id={pokemon.id}
-              name={pokemon.nameJa}
-              iconImage={pokemon.iconImage}
-              image={pokemon.image}
-              type={pokemon.typeJa}
-              colorType={pokemon.typeEn}
-            />
-          ))}
-          </div>
+        <Body language={language} />
         <LookMore getAllPokemons={getAllPokemons} />
       </div>
     </div>
