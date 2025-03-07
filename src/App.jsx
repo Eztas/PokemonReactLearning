@@ -1,7 +1,7 @@
 import PokemonThumbnails from './PokemonThumbnails';
 import LookMore from './LookMore';
+import Header from './Header';
 import { useEffect, useContext } from 'react';
-import { Link } from "react-router-dom";
 import { PokemonContext } from './PokemonProvider';
 import { createPokemonObject } from './createPokemonObject';
 
@@ -10,6 +10,7 @@ function App({language}) {
   // フック(useStateやuseEffect)は、関数コンポーネント内でのみ使用可能
   // そうしないと、順序の保証や状態が混同し、管理しにくくなるため
 
+  // 言語もコンテキスト化できるくない?
   const {pokemons, 
          setPokemons, 
          url, 
@@ -35,12 +36,7 @@ function App({language}) {
 
   return (
     <div className="app-container">
-      <h1>ポケモン図鑑</h1>
-      {language === 'en' ? (
-        <Link to="/JapaneseApp">日本語版ポケモン図鑑はこちらから</Link>
-      ) : (
-        <Link to="/EnglishApp">英語版ポケモン図鑑はこちらから</Link>)
-      }
+      <Header language={language}/>
       <div className='pokemon-container'>
         <div className='all-container'>
           {pokemons.map((pokemon, index) => (
@@ -66,7 +62,7 @@ function App({language}) {
               colorType={pokemon.typeEn}
             />
           ))}
-        </div>
+          </div>
         <LookMore getAllPokemons={getAllPokemons} />
       </div>
     </div>
