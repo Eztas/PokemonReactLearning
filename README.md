@@ -68,7 +68,7 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/06~07 デプロイ前のリファクタリング(useContextによるデータ共有, 日本語と英語版の実装, React Router)
 
-2025/03/07 コンポーネント関数の共有化
+2025/03/07 コンポーネント関数の共有化, 普通の関数と関数コンポーネントについて
 
 # React個人的まとめ
 
