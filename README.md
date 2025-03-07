@@ -177,6 +177,12 @@ exportされたContextを引数にしながら、useContextを使うことで、
 
 主にこの3要素が必要になる
 
+## Link
+
+BrowserRouterでのオーバーラップが必要
+
+BrowserRouterからのContextがLinkに必要である
+
 ## fetchとpromise
 
 fetchメソッドはそもそもpromiseを返す(待機中, 成功、失敗のいずれか)

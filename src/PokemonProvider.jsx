@@ -4,7 +4,7 @@ import EnglishApp from './EnglishApp';
 
 export const PokemonContext = createContext();
 
-function PokemonProvider() {
+function PokemonProvider({children}) {
     const LIMIT_NUMBER = 20; // パラメータにlimitを設定し、20件取得する
     
     const [pokemons, setPokemons] = useState([]); // ポケモンのデータを格納する
@@ -12,7 +12,7 @@ function PokemonProvider() {
 
     return (
         <PokemonContext.Provider value={{ pokemons, setPokemons, url, setUrl }}>
-            <EnglishApp />
+            {children}
         </PokemonContext.Provider>
     )
 }

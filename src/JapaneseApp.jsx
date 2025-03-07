@@ -1,8 +1,11 @@
 import PokemonThumbnails from './PokemonThumbnails';
+import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from 'react';
 import pokemonNameJaEnJson from "./api/pokemonNameJaEn.json";
 import pokemonTypeJson from "./api/pokemonType.json";
 import { PokemonContext } from './PokemonProvider';
+
+// https://alterbo.jp/blog/hisshi2-2012/
 
 function JapaneseApp() {
 
@@ -66,6 +69,7 @@ function JapaneseApp() {
   return (
     <div className="app-container">
       <h1>ポケモン図鑑</h1>
+      {<Link to="/EnglishApp">英語版図鑑はこちらから</Link>}
       <div className='pokemon-container'>
         <div className='all-container'>
           {pokemons.map((pokemon, index) => (
