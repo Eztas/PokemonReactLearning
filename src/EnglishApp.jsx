@@ -8,9 +8,12 @@ function EnglishApp() {
 
   // フック(useStateやuseEffect)は、関数コンポーネント内でのみ使用可能
   // そうしないと、順序の保証や状態が混同し、管理しにくくなるため
-
-  const {pokemons, setPokemons, url, setUrl} = useContext(PokemonContext); // ポケモンのデータを格納する
-  const [isReloading, setIsReloading] = useState(false); // リロード中かどうかの状態を格納
+  const {pokemons, 
+    setPokemons, 
+    url, 
+    setUrl, 
+    isReloading, 
+    setIsReloading} = useContext(PokemonContext); // ポケモンのデータを格納する
 
   const getAllPokemons = () => {
     setIsReloading(true); // リロード中の状態をtrueにする
