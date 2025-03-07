@@ -5,8 +5,6 @@ import pokemonNameJaEnJson from "./api/pokemonNameJaEn.json";
 import pokemonTypeJson from "./api/pokemonType.json";
 import { PokemonContext } from './PokemonProvider';
 
-// https://alterbo.jp/blog/hisshi2-2012/
-
 function JapaneseApp() {
 
   // フック(useStateやuseEffect)は、関数コンポーネント内でのみ使用可能
