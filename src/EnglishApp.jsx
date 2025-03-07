@@ -30,8 +30,8 @@ function EnglishApp() {
 
   return (
     <div className="app-container">
-      <h1>ポケモン図鑑</h1>
-      {<Link to="/JapaneseApp">日本語版図鑑はこちらから</Link>}
+      <h1>Pokedex </h1>
+      {<Link to="/JapaneseApp">Please click here to look at Japanese Pokedex</Link>}
       <div className='pokemon-container'>
         <div className='all-container'>
           {pokemons.map((pokemon, index) => (
@@ -42,6 +42,7 @@ function EnglishApp() {
               iconImage={pokemon.iconImage}
               image={pokemon.image}
               type={pokemon.typeEn} 
+              colorType={pokemon.typeEn} 
             />
           ))}
         </div>
