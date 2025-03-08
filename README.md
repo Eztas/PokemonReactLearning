@@ -1,3 +1,7 @@
+# Pokedex
+
+[deploy結果](https://pokedex-app-6e3ac.web.app)
+
 # Git Command
 
 ## ローカルで作成したリポジトリをリモートのリポジトリに移行
@@ -68,7 +72,13 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/06~07 デプロイ前のリファクタリング(useContextによるデータ共有, 日本語と英語版の実装, React Router)
 
-2025/03/07 コンポーネント関数の共有化, 普通の関数と関数コンポーネントについて
+2025/03/07~08 コンポーネント関数の共有化, 普通の関数と関数コンポーネントについて
+
+2025/03/08 デプロイ
+
+# 今後
+
+エラー処理(APIデータ取得できない時、何もやってない)
 
 # React個人的まとめ
 
@@ -262,6 +272,83 @@ promiseオブジェクトを使うことで、順番にfetchなどの非同期�
 
 [https://qiita.com/hisashi_matsui/items/d8457284e9219f57ca6c](https://qiita.com/hisashi_matsui/items/d8457284e9219f57ca6c)
 
+## デプロイはbuildフォルダで
+
+publicで行うと色々公開される可能性あり
+
+参考文献のdeploy方法が色々合わなかったので、2025年版を表記
+
+1. [Firebase公式サイト](https://firebase.google.com/?hl=ja)でプロジェクトを作成
+ここは、[参考文献](https://qiita.com/hiroki-harada/items/ca22ac177db68e3c3796)を参考にして良さそう
+(時々、ここにはないページもあったけど、普通に存在するボタンを押していけばOK)
+
+2. 必要なパッケージのインストール
+
+```
+npm install --save firebase
+npm install -g firebase-tools
+```
+
+3. `firebase login`で、Googleアカウントを選択する(webページに飛びます)
+
+4. `npm run build`でbuildフォルダの作瀬尾
+
+5. CLIでの手順(4と5は逆でもいいらしい)
+
+```
+firebase init
+```
+
+? Are you ready to proceed? (Y/n)でYを選択
+
+( ) Hosting: Configure and deploy Firebase Hosting sites, これをスペースキー+Enterで選択
+
+> Use an existing projectを選択して, 作成したプロジェクトを利用
+
+```
+? What do you want to use as your public directory? (public)
+```
+
+では、buildを入力(GitHubに上げている人とかはAPIキーなどを外部にさらすことになるかも)
+
+```
+ Configure as a single-page app (rewrite all urls to /index.html)? (y/N)
+```
+
+これはNoでいい(SSRとかだとYesがいいらしい)
+
+```
+? Set up automatic builds and deploys with GitHub? (y/N) N
+```
+
+今はこんなのも聞かれるが、よく分からないし多分NoでOK
+
+```
+? File public/index.html already exists. Overwrite? (y/N)y
+```
+
+これもNo
+
+buildはここで急造されたページなので、最新版の情報を入れておく
+
+6. webページへ移動し、プロジェクト内でアプリを作成
+
+ウェブアプリへのfirebaseの追加
+
+このアプリの Firebase Hosting も設定します。はチェックしなくていい
+
+アプリを登録
+
+scriptタグのSDKを取得があるが、これまでにinstallしていて、それと重複する可能性があるからやめた方がいい
+
+7. `firebase deploy`
+
+すぐにはできないかも, 一回やっても表示されなくて、1時間くらいおいて再度deployしたらいけた
+
+8. `firebase hosting:disable`
+
+deployをやめたくなったら、これを実行
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -347,6 +434,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 [https://qiita.com/hato_code/items/e75f215ef2d5191341dc](https://qiita.com/hato_code/items/e75f215ef2d5191341dc)
 
 参考文献通り、まずjsとjsxで進め、次の段階にtsとtsxでの実装を試みる
+
+[https://qiita.com/hiroki-harada/items/ca22ac177db68e3c3796](https://qiita.com/hiroki-harada/items/ca22ac177db68e3c3796)
+
+firebase デプロイ方法
 
 [https://qiita.com/rio_threehouse/items/7632f5a593cf218b9504](https://qiita.com/rio_threehouse/items/7632f5a593cf218b9504)
 
