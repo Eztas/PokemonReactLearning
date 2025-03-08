@@ -1,3 +1,7 @@
+# Pokedex
+
+[deploy結果](https://pokedex-app-6e3ac.web.app)
+
 # Git Command
 
 ## ローカルで作成したリポジトリをリモートのリポジトリに移行
@@ -269,6 +273,77 @@ promiseオブジェクトを使うことで、順番にfetchなどの非同期�
 publicで行うと色々公開される可能性あり
 
 参考文献のdeploy方法が色々合わなかったので、2025年版を表記
+
+1. [Firebase公式サイト](https://firebase.google.com/?hl=ja)でプロジェクトを作成
+ここは、[参考文献](https://qiita.com/hiroki-harada/items/ca22ac177db68e3c3796)を参考にして良さそう
+(時々、ここにはないページもあったけど、普通に存在するボタンを押していけばOK)
+
+2. 必要なパッケージのインストール
+
+```
+npm install --save firebase
+npm install -g firebase-tools
+```
+
+3. `firebase login`で、Googleアカウントを選択する(webページに飛びます)
+
+4. `npm run build`でbuildフォルダの作瀬尾
+
+5. CLIでの手順(4と5は逆でもいいらしい)
+
+```
+firebase init
+```
+
+? Are you ready to proceed? (Y/n)でYを選択
+
+( ) Hosting: Configure and deploy Firebase Hosting sites, これをスペースキー+Enterで選択
+
+> Use an existing projectを選択して, 作成したプロジェクトを利用
+
+```
+? What do you want to use as your public directory? (public)
+```
+
+では、buildを入力(GitHubに上げている人とかはAPIキーなどを外部にさらすことになるかも)
+
+```
+ Configure as a single-page app (rewrite all urls to /index.html)? (y/N)
+```
+
+これはNoでいい(SSRとかだとYesがいいらしい)
+
+```
+? Set up automatic builds and deploys with GitHub? (y/N) N
+```
+
+今はこんなのも聞かれるが、よく分からないし多分NoでOK
+
+```
+? File public/index.html already exists. Overwrite? (y/N)y
+```
+
+これもNo
+
+buildはここで急造されたページなので、最新版の情報を入れておく
+
+6. webページへ移動し、プロジェクト内でアプリを作成
+
+ウェブアプリへのfirebaseの追加
+
+このアプリの Firebase Hosting も設定します。はチェックしなくていい
+
+アプリを登録
+
+scriptタグのSDKを取得があるが、これまでにinstallしていて、それと重複する可能性があるからやめた方がいい
+
+7. `firebase deploy`
+
+すぐにはできないかも, 一回やっても表示されなくて、1時間くらいおいて再度deployしたらいけた
+
+8. `firebase hosting:disable`
+
+deployをやめたくなったら、これを実行
 
 # Getting Started with Create React App
 
