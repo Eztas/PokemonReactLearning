@@ -68,7 +68,9 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/06~07 デプロイ前のリファクタリング(useContextによるデータ共有, 日本語と英語版の実装, React Router)
 
-2025/03/07 コンポーネント関数の共有化, 普通の関数と関数コンポーネントについて
+2025/03/07~08 コンポーネント関数の共有化, 普通の関数と関数コンポーネントについて
+
+2025/03/08 デプロイ
 
 # React個人的まとめ
 
@@ -347,6 +349,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 [https://qiita.com/hato_code/items/e75f215ef2d5191341dc](https://qiita.com/hato_code/items/e75f215ef2d5191341dc)
 
 参考文献通り、まずjsとjsxで進め、次の段階にtsとtsxでの実装を試みる
+
+[https://qiita.com/hiroki-harada/items/ca22ac177db68e3c3796](https://qiita.com/hiroki-harada/items/ca22ac177db68e3c3796)
+
+firebase デプロイ方法
 
 [https://qiita.com/rio_threehouse/items/7632f5a593cf218b9504](https://qiita.com/rio_threehouse/items/7632f5a593cf218b9504)
 
