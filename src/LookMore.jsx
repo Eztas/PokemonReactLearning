@@ -4,20 +4,23 @@ import { PokemonContext } from './PokemonProvider';
 function LookMore({getAllPokemons}) {
     const {isReloading, language} = useContext(PokemonContext);
 
+    const lookMoreTranslations = {
+        en: {
+            buttonText: "Look More Pokemons！",
+        },
+        ja: {
+            buttonText: "もっと見る！",
+        }
+      };
+    
     return (
         <div className="look-more">
             {isReloading ? (
                 <div className='load-more'>Now Loading…</div>
             ): (
-                language === 'en' ? (
-                    <button className='load-more' onClick={getAllPokemons}>
-                        Look More Pokemons！
-                    </button>
-                ) : (
-                    <button className='load-more' onClick={getAllPokemons}>
-                        もっと見る！
-                    </button>
-                )
+                <button className='load-more' onClick={getAllPokemons}>
+                    {lookMoreTranslations[language].buttonText}
+                </button>
             )}
         </div>
     )

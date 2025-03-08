@@ -4,19 +4,24 @@ import { Link } from "react-router-dom";
 
 function Header() {
   const {language} = useContext(PokemonContext); // ポケモンのデータを格納する
+
+  const headerTranslations = {
+    en: {
+      header: "Pokedex",
+      linkText: "Please click here to look at Japanese Pokedex",
+      linkPath: "/JapaneseApp"
+    },
+    ja: {
+      header: "ポケモン図鑑", // 正しい日本語テキスト
+      linkText: "英語版ポケモン図鑑はこちらから",
+      linkPath: "/EnglishApp"
+    }
+  };
+
   return (
     <div>
-      {language === "en" ? (
-        <div>
-          <h1>Pokedex</h1>
-          <Link to="/JapaneseApp">Please click here to look at Japanese Pokedex</Link>
-        </div>
-      ) : (
-        <div>
-          <h1>ポケモン図鑑</h1>
-          <Link to="/EnglishApp">英語版ポケモン図鑑はこちらから</Link>
-        </div>
-      )}
+      <h1>{headerTranslations[language].header}</h1>
+      <Link to={headerTranslations[language].linkPath}>{headerTranslations[language].linkText}</Link>
     </div>
   );
 }
