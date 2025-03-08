@@ -264,6 +264,12 @@ promiseオブジェクトを使うことで、順番にfetchなどの非同期�
 
 [https://qiita.com/hisashi_matsui/items/d8457284e9219f57ca6c](https://qiita.com/hisashi_matsui/items/d8457284e9219f57ca6c)
 
+## デプロイはbuildフォルダで
+
+publicで行うと色々公開される可能性あり
+
+参考文献のdeploy方法が色々合わなかったので、2025年版を表記
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
