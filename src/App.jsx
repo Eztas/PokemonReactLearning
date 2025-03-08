@@ -9,8 +9,6 @@ function App() {
 
   // フック(useStateやuseEffect)は、関数コンポーネント内でのみ使用可能
   // そうしないと、順序の保証や状態が混同し、管理しにくくなるため
-
-  // 言語もコンテキスト化できるくない?
   const {setPokemons, 
          url, 
          setUrl,  
