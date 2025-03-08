@@ -76,6 +76,10 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/08 デプロイ
 
+# 今後
+
+エラー処理(APIデータ取得できない時、何もやってない)
+
 # React個人的まとめ
 
 ## Reactの基本仕様
