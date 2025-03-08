@@ -6,6 +6,7 @@ import { PokemonContext } from './PokemonProvider';
 
 function Body() {
     const {pokemons, language} = useContext(PokemonContext); // ポケモンのデータを格納する
+
     return (
         <div className='all-container'>
           {pokemons.map((pokemon, index) => (

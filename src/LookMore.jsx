@@ -1,15 +1,6 @@
 import { useContext } from 'react';
 import { PokemonContext } from './PokemonProvider';
 
-
-// 引数は{}で囲う, 理屈はよく分からない
-// HTMLと同じで, getAllPokemonsだけだと, onClick="getAllPokemons"と誤認識
-// LookMoreがDOMを返すからこそ起きる(?)
-// getAllPokemonsだけだと、props配列(ただのオブジェクト名)と認識されるだけで、
-// getAllPokemons.getAllPokemonsとしないといけない
-
-// getAllPokemons, getAllPokemons.getAllPokemonsか
-// {getAllPokemons}, getAllPokemonsの2択
 function LookMore({getAllPokemons}) {
     const {isReloading, language} = useContext(PokemonContext);
 
