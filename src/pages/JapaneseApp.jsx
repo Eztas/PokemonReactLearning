@@ -1,15 +1,15 @@
 import App from './App';
 import { useContext } from 'react';
-import { PokemonContext } from './PokemonProvider';
+import { PokemonContext } from '../contexts/PokemonProvider';
 
-function EnglishApp() {
+function JapaneseApp() {
   const {setLanguage} = useContext(PokemonContext); // ポケモンのデータを格納する
 
-  setLanguage('en');
+  setLanguage('ja');
   
   return (
     <App />
   )
 }
 
-export default EnglishApp;
+export default JapaneseApp;

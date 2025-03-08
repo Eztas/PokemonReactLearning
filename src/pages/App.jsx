@@ -1,16 +1,14 @@
-import Header from './Header';
-import Body from './Body';
-import LookMore from './LookMore';
+import Header from '../components/Header';
+import Body from '../components/Body';
+import LookMore from '../components/LookMore';
 import { useEffect, useContext } from 'react';
-import { PokemonContext } from './PokemonProvider';
-import { createPokemonObject } from './createPokemonObject';
+import { PokemonContext } from '../contexts/PokemonProvider';
+import { createPokemonObject } from '../api/createPokemonObject';
 
 function App() {
 
   // フック(useStateやuseEffect)は、関数コンポーネント内でのみ使用可能
   // そうしないと、順序の保証や状態が混同し、管理しにくくなるため
-
-  // 言語もコンテキスト化できるくない?
   const {setPokemons, 
          url, 
          setUrl,  

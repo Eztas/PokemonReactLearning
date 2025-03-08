@@ -1,4 +1,4 @@
-import { translatePokemon } from './api/translatePokemon';
+import { translatePokemon } from './translatePokemon';
 
 // 重要なのは、関数がReactコンポーネントとして定義され、Reactが管理するコンテキスト内で実行されるかどうかです
 // これは別にContextの中で宣言されているわけではない
