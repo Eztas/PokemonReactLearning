@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PokemonContext } from './PokemonProvider';
+import { PokemonContext } from '../contexts/PokemonProvider';
 import { Link } from "react-router-dom";
 
 function Header() {

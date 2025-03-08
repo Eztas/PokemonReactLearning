@@ -1,9 +1,9 @@
-import Header from './Header';
-import Body from './Body';
-import LookMore from './LookMore';
+import Header from '../components/Header';
+import Body from '../components/Body';
+import LookMore from '../components/LookMore';
 import { useEffect, useContext } from 'react';
-import { PokemonContext } from './PokemonProvider';
-import { createPokemonObject } from './createPokemonObject';
+import { PokemonContext } from '../contexts/PokemonProvider';
+import { createPokemonObject } from '../api/createPokemonObject';
 
 function App() {
 

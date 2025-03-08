@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PokemonContext } from './PokemonProvider';
+import { PokemonContext } from '../contexts/PokemonProvider';
 
 function LookMore({getAllPokemons}) {
     const {isReloading, language} = useContext(PokemonContext);

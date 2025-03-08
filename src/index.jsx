@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import PokemonProvider from './PokemonProvider';
-import JapaneseApp from './JapaneseApp';
-import EnglishApp from './EnglishApp';
+import PokemonProvider from './contexts/PokemonProvider';
+import JapaneseApp from './pages/JapaneseApp';
+import EnglishApp from './pages/EnglishApp';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -1,6 +1,6 @@
 import PokemonThumbnails from './PokemonThumbnails';
 import { useContext } from 'react';
-import { PokemonContext } from './PokemonProvider';
+import { PokemonContext } from '../contexts/PokemonProvider';
 
 function Body() {
     const {pokemons, language} = useContext(PokemonContext); // ポケモンのデータを格納する
