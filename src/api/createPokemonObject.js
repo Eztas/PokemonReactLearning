@@ -29,5 +29,20 @@ export const createPokemonObject = (pokemonsData, setPokemons) => {
             // 非同期であり、順番が一意ではないのでsortしながら追加
             setPokemons(currentPokemonData => [...currentPokemonData, newPokemonData].sort((a, b) => a.id - b.id));
         })
+        .catch(error => {
+            const errorText = "No Data";
+            const errorData = {
+                id: errorText,
+                nameJa: errorText,
+                nameEn: errorText,
+                iconImage: errorText,
+                image: error,
+                typeJa: errorText, 
+                typeEn: errorText
+            }
+
+            setPokemons(currentPokemonData => [...currentPokemonData, errorData].sort((a, b) => a.id - b.id));
+            console.log(error);
+        })
     })
 }

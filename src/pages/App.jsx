@@ -12,7 +12,8 @@ function App() {
   const {setPokemons, 
          url, 
          setUrl,  
-         setIsReloading} = useContext(PokemonContext); // ポケモンのデータを格納する
+         setIsReloading,
+         setIsFetchError } = useContext(PokemonContext); // ポケモンのデータを格納する
 
   // reloadingをuseStateで管理とかにすると、日本語ページと英語ページで競合しそうなのでここはコンポーネント化しない
   const getAllPokemons = () => {
@@ -22,6 +23,11 @@ function App() {
       .then(data => {              // data = res.json()
         createPokemonObject(data.results, setPokemons); // APIで取得したポケモンの情報に関するオブジェクト生成
         setUrl(data.next); // 次の20件(21件目から40件目)をURLにセットする
+      })
+      .catch(error => {
+        setIsFetchError(true)
+        console.log(error);
+
       })
       .finally(() => setIsReloading(false)); // リロード中の状態をfalseにする
   }
