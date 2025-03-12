@@ -16,7 +16,7 @@ function App() {
          setIsFetchError } = useContext(PokemonContext); // ポケモンのデータを格納する
 
   // reloadingをuseStateで管理とかにすると、日本語ページと英語ページで競合しそうなのでここはコンポーネント化しない
-  const getAllPokemons = () => {
+  const getPokemons = () => {
     setIsReloading(true); // リロード中の状態をtrueにする
     fetch(url)
       .then(res => res.json()) 
@@ -34,7 +34,7 @@ function App() {
 
   // useEffectの第1引数では、アロー関数で、引数 => 結果(動作内容)で定義
   useEffect(() => {
-    getAllPokemons();
+    getPokemons();
   }, []) // API元の内容変化時の再レンダリングは今回無視, そのため[]を第2引数
 
   return (
@@ -42,7 +42,7 @@ function App() {
       <Header />
       <div className='pokemon-container'>
         <Body />
-        <LookMore getAllPokemons={getAllPokemons} />
+        <LookMore getPokemons={getPokemons} />
       </div>
     </div>
   )
