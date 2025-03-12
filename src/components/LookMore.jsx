@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { PokemonContext } from '../contexts/PokemonProvider';
 
-function LookMore({getAllPokemons}) {
+function LookMore({getPokemons}) {
     const {isReloading, language} = useContext(PokemonContext);
 
     const lookMoreTranslations = {
@@ -18,7 +18,7 @@ function LookMore({getAllPokemons}) {
             {isReloading ? (
                 <div className='load-more'>Now Loading…</div>
             ): (
-                <button className='load-more' onClick={getAllPokemons}>
+                <button className='load-more' onClick={getPokemons}>
                     {lookMoreTranslations[language].buttonText}
                 </button>
             )}
