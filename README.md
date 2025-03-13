@@ -78,6 +78,8 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/10 テスト(jest), [https://qiita.com/yo16/items/d7dda9c8b496204fce82](https://qiita.com/yo16/items/d7dda9c8b496204fce82)
 
+2025/03/13 アクセス確認用ファイルの使用を構想
+
 # 今後
 
 エラー処理(APIデータ取得できない時、何もやってない)
