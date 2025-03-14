@@ -76,13 +76,18 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/08 デプロイ
 
-2025/03/10 テスト(jest), [https://qiita.com/yo16/items/d7dda9c8b496204fce82](https://qiita.com/yo16/items/d7dda9c8b496204fce82)
+2025/03/10~13 テスト(jest), [https://qiita.com/yo16/items/d7dda9c8b496204fce82](https://qiita.com/yo16/items/d7dda9c8b496204fce82)
 
-2025/03/13 アクセス確認用ファイルの使用を構想
+2025/03/11~12 エラー処理
 
-# 今後
+2025/03/13 アクセス確認用ファイルの使用を構想(axios)
 
-エラー処理(APIデータ取得できない時、何もやってない)
+[https://tabinou.com/archives/2867](https://tabinou.com/archives/2867)
+
+[https://www.seplus.jp/dokushuzemi/blog/2021/12/tutorial_react_express.html#Axios_POST](https://www.seplus.jp/dokushuzemi/blog/2021/12/tutorial_react_express.html#Axios_POST)
+
+fs - fs.writeFileSync
+->サーバーサイドでの実行が必須であり使用不可能(?)
 
 # React個人的まとめ
 
