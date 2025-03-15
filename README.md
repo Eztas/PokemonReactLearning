@@ -457,3 +457,7 @@ propsとstate, 今後混同しそう
 [https://zenn.dev/yumemi_inc/articles/2020-10-06-react-firebase-deploy](https://zenn.dev/yumemi_inc/articles/2020-10-06-react-firebase-deploy)
 
 FireBaseデプロイで色々使える
+
+[https://www.i-ryo.com/entry/2021/02/24/062009](https://www.i-ryo.com/entry/2021/02/24/062009)
+
+Firebase read処理
