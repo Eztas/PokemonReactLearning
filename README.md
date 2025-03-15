@@ -80,7 +80,9 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/11~12 エラー処理
 
-2025/03/13 アクセス確認用ファイルの使用を構想(axios)
+2025/03/13~15 アクセス確認用ファイルの使用を構想 -> フロントエンドとバックエンドで各々のデプロイが必要そう(?)
+
+2025/03/15 Firebase Realtime Database使用の模索
 
 [https://tabinou.com/archives/2867](https://tabinou.com/archives/2867)
 
