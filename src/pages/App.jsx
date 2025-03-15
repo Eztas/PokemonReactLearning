@@ -32,6 +32,17 @@ function App() {
       .finally(() => setIsReloading(false)); // リロード中の状態をfalseにする
   }
 
+  // 最新時間の取得, 時間の比較(GET)
+  // 時間の更新(POST)
+  // アクセス回数の取得、限界アクセス回数の取得, アクセス数の比較(GET)
+  // アクセス回数更新(POST)
+  const checkAccessCount = () => {
+    fetch('server/updateAccessLog', {
+      method: 'POST',
+
+    })
+  }
+
   // useEffectの第1引数では、アロー関数で、引数 => 結果(動作内容)で定義
   useEffect(() => {
     getPokemons();
