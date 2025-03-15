@@ -451,3 +451,7 @@ firebase デプロイ方法
 [https://qiita.com/rio_threehouse/items/7632f5a593cf218b9504](https://qiita.com/rio_threehouse/items/7632f5a593cf218b9504)
 
 propsとstate, 今後混同しそう
+
+[https://zenn.dev/yumemi_inc/articles/2020-10-06-react-firebase-deploy](https://zenn.dev/yumemi_inc/articles/2020-10-06-react-firebase-deploy)
+
+FireBaseデプロイで色々使える

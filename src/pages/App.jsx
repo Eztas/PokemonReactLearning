@@ -33,13 +33,24 @@ function App() {
   }
 
   // 最新時間の取得, 時間の比較(GET)
-  // 時間の更新(POST)
   // アクセス回数の取得、限界アクセス回数の取得, アクセス数の比較(GET)
+  // 時間の更新(POST)
   // アクセス回数更新(POST)
   const checkAccessCount = () => {
     fetch('server/updateAccessLog', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: {
+        "newestAccessTime" : "2025/03/15",
+        "accessCount" : 1
+      }
+    })
 
+    fetch('server/updateAccessLog')
+    .then(res => res.json()) 
+    .then(data => {              // data = res.json()
     })
   }
 
