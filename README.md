@@ -84,6 +84,8 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/15~18 ファイル書き込みをやめ、Firebase Realtime Database使用の模索
 
+->でもこれもデータベースが多数書き換えられる可能性
+
 # React個人的まとめ
 
 ## Reactの基本仕様
