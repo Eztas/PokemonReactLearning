@@ -1,5 +1,12 @@
-import firebase from "firebase/app";
-import 'firebase/database';
+// import firebase from "firebase/app";
+// https://firebase.google.com/docs/database/rtdb-vs-firestore?hl=ja
+// cloud firestoreとrealtime databaseの違い
+// 初心者は前者がおすすめらしい
+
+// 自分が直感的に理解できそうな箇所
+// https://qiita.com/Naoya_pro/items/a42f1ecae8acce249ef3
+import { initializeApp } from "firebase/app";
+import { getDatabase } from 'firebase/database';
 
 // Config
 const firebaseConfig = {
@@ -13,7 +20,20 @@ const firebaseConfig = {
     measurementId: process.env.PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
-firebase.initializeApp(firebaseConfig);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
-// DB
-export const db = firebase.database();
+// Get a reference to the database service
+const database = getDatabase(app); // export const db = firebase.database();
+
+const auth = getAuth(app)
+
+const firestore = getFirestore(app)
+
+const storage = getStorage(app)
+
+const collectionAccessLogID = process.env.PUBLIC_FIREBASE_COLLECTION_ID;
+
+const documentID = process.env.PUBLIC_FIREBASE_DOCUMENT_ID;
+
+export { database, auth, firestore, storage, collectionAccessLogID, documentID }

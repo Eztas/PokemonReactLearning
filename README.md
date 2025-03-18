@@ -76,20 +76,13 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/08 デプロイ
 
-2025/03/10~13 テスト(jest), [https://qiita.com/yo16/items/d7dda9c8b496204fce82](https://qiita.com/yo16/items/d7dda9c8b496204fce82)
+2025/03/10~18 テスト(jest), [https://qiita.com/yo16/items/d7dda9c8b496204fce82](https://qiita.com/yo16/items/d7dda9c8b496204fce82)
 
 2025/03/11~12 エラー処理
 
 2025/03/13~15 アクセス確認用ファイルの使用を構想 -> フロントエンドとバックエンドで各々のデプロイが必要そう(?)
 
-2025/03/15 Firebase Realtime Database使用の模索
-
-[https://tabinou.com/archives/2867](https://tabinou.com/archives/2867)
-
-[https://www.seplus.jp/dokushuzemi/blog/2021/12/tutorial_react_express.html#Axios_POST](https://www.seplus.jp/dokushuzemi/blog/2021/12/tutorial_react_express.html#Axios_POST)
-
-fs - fs.writeFileSync
-->サーバーサイドでの実行が必須であり使用不可能(?)
+2025/03/15~18 ファイル書き込みをやめ、Firebase Realtime Database使用の模索
 
 # React個人的まとめ
 
