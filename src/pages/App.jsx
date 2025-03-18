@@ -4,6 +4,7 @@ import LookMore from '../components/LookMore';
 import { useEffect, useContext } from 'react';
 import { PokemonContext } from '../contexts/PokemonProvider';
 import { createPokemonObject } from '../api/createPokemonObject';
+import { updateAccessLog } from '../api/useDatabase';
 
 function App() {
 
@@ -21,37 +22,15 @@ function App() {
     fetch(url)
       .then(res => res.json()) 
       .then(data => {              // data = res.json()
+        updateAccessLog();
         createPokemonObject(data.results, setPokemons); // APIで取得したポケモンの情報に関するオブジェクト生成
         setUrl(data.next); // 次の20件(21件目から40件目)をURLにセットする
       })
       .catch(error => {
         setIsFetchError(true)
         console.log(error);
-
       })
       .finally(() => setIsReloading(false)); // リロード中の状態をfalseにする
-  }
-
-  // 最新時間の取得, 時間の比較(GET)
-  // アクセス回数の取得、限界アクセス回数の取得, アクセス数の比較(GET)
-  // 時間の更新(POST)
-  // アクセス回数更新(POST)
-  const checkAccessCount = () => {
-    fetch('server/updateAccessLog', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: {
-        "newestAccessTime" : "2025/03/15",
-        "accessCount" : 1
-      }
-    })
-
-    fetch('server/updateAccessLog')
-    .then(res => res.json()) 
-    .then(data => {              // data = res.json()
-    })
   }
 
   // useEffectの第1引数では、アロー関数で、引数 => 結果(動作内容)で定義
