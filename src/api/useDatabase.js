@@ -1,7 +1,7 @@
 // https://zenn.dev/nash/articles/6e18bd94eca63e
 
 import { firestore, collectionAccessLogID, documentID } from '../firebaseConfig'; // 上記のコードを保存したファイル
-import { doc, setDoc, updateDoc, collection, getDocs, increment } from 'firebase/firestore'
+import { doc, setDoc, updateDoc, increment } from 'firebase/firestore'
 
 export const updateAccessLog = async () => {
   const today = new Date();
@@ -10,6 +10,7 @@ export const updateAccessLog = async () => {
   const day = String(today.getDate()).padStart(2, '0');
   const todayStr = `${year}/` + month + '/' + day;
 
+  // FireStoreのコレクションID、ドキュメントIDを元に、アクセスしてデータを取得
   const docRef = doc(firestore, collectionAccessLogID, documentID);
   const docSnap = await getDoc(docRef);
 

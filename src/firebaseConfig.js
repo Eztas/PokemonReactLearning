@@ -1,12 +1,6 @@
-// import firebase from "firebase/app";
-// https://firebase.google.com/docs/database/rtdb-vs-firestore?hl=ja
-// cloud firestoreとrealtime databaseの違い
-// 初心者は前者がおすすめらしい
-
-// 自分が直感的に理解できそうな箇所
-// https://qiita.com/Naoya_pro/items/a42f1ecae8acce249ef3
 import { initializeApp } from "firebase/app";
 import { getDatabase } from 'firebase/database';
+import { getFirestore } from 'firebase/firestore';
 
 // Config
 const firebaseConfig = {
@@ -26,14 +20,10 @@ const app = initializeApp(firebaseConfig);
 // Get a reference to the database service
 const database = getDatabase(app); // export const db = firebase.database();
 
-const auth = getAuth(app)
-
 const firestore = getFirestore(app)
-
-const storage = getStorage(app)
 
 const collectionAccessLogID = process.env.PUBLIC_FIREBASE_COLLECTION_ID;
 
 const documentID = process.env.PUBLIC_FIREBASE_DOCUMENT_ID;
 
-export { database, auth, firestore, storage, collectionAccessLogID, documentID }
+export { database, firestore, collectionAccessLogID, documentID }
