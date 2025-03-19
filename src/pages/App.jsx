@@ -19,6 +19,17 @@ function App() {
 
   const [accessLog, setAccessLog] = useState("true");
 
+  const updateAccessLog = () => {
+    fetch('src/server/updateAccessLog')
+    .then(res => res.json()) 
+    .then(data => {              // data = res.json()
+      console.log(data.message)
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
+
   // reloadingをuseStateで管理とかにすると、日本語ページと英語ページで競合しそうなのでここはコンポーネント化しない
   const getPokemons = () => {
     setIsReloading(true); // リロード中の状態をtrueにする
