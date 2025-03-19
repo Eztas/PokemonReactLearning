@@ -1,10 +1,11 @@
 import Header from '../components/Header';
 import Body from '../components/Body';
 import LookMore from '../components/LookMore';
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { PokemonContext } from '../contexts/PokemonProvider';
 import { createPokemonObject } from '../api/createPokemonObject';
-import { updateAccessLog } from '../api/useDatabase';
+//import { updateAccessLog } from '../api/useDatabase';
+import {updateAccessLog} from "../server/updateAccessLog";
 
 function App() {
 
@@ -15,6 +16,8 @@ function App() {
          setUrl,  
          setIsReloading,
          setIsFetchError } = useContext(PokemonContext); // ポケモンのデータを格納する
+
+  const [accessLog, setAccessLog] = useState("true");
 
   // reloadingをuseStateで管理とかにすると、日本語ページと英語ページで競合しそうなのでここはコンポーネント化しない
   const getPokemons = () => {
@@ -40,6 +43,7 @@ function App() {
 
   return (
     <div className="app-container">
+      <div>{accessLog}</div>
       <Header />
       <div className='pokemon-container'>
         <Body />

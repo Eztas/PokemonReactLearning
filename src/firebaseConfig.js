@@ -3,6 +3,7 @@ import { getDatabase } from 'firebase/database';
 import { getFirestore } from 'firebase/firestore';
 
 // Config
+/*
 const firebaseConfig = {
     apiKey: process.env.PUBLIC_FIREBASE_API_KEY,
     authDomain: process.env.PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -27,3 +28,5 @@ const collectionAccessLogID = process.env.PUBLIC_FIREBASE_COLLECTION_ID;
 const documentID = process.env.PUBLIC_FIREBASE_DOCUMENT_ID;
 
 export { database, firestore, collectionAccessLogID, documentID }
+
+*/
