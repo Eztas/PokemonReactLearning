@@ -86,6 +86,9 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 ->でもこれもデータベースが多数書き換えられる可能性
 
+2025/03/18~21 ファイル書き込みをもう一度試すも失敗,
+このreactでのプロジェクトでは行わず, Next.jsでの利用により模索する
+
 # React個人的まとめ
 
 ## Reactの基本仕様
