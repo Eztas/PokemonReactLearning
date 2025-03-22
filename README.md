@@ -76,11 +76,18 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/08 デプロイ
 
-2025/03/10 テスト(jest), [https://qiita.com/yo16/items/d7dda9c8b496204fce82](https://qiita.com/yo16/items/d7dda9c8b496204fce82)
+2025/03/10~18 テスト(jest), [https://qiita.com/yo16/items/d7dda9c8b496204fce82](https://qiita.com/yo16/items/d7dda9c8b496204fce82)
 
-# 今後
+2025/03/11~12 エラー処理
 
-エラー処理(APIデータ取得できない時、何もやってない)
+2025/03/13~15 アクセス確認用ファイルの使用を構想 -> フロントエンドとバックエンドで各々のデプロイが必要そう(?)
+
+2025/03/15~18 ファイル書き込みをやめ、Firebase Realtime Database使用の模索
+
+->でもこれもデータベースが多数書き換えられる可能性
+
+2025/03/18~21 ファイル書き込みをもう一度試すも失敗,
+このreactでのプロジェクトでは行わず, Next.jsでの利用により模索する
 
 # React個人的まとめ
 
@@ -444,3 +451,13 @@ firebase デプロイ方法
 [https://qiita.com/rio_threehouse/items/7632f5a593cf218b9504](https://qiita.com/rio_threehouse/items/7632f5a593cf218b9504)
 
 propsとstate, 今後混同しそう
+
+[https://zenn.dev/yumemi_inc/articles/2020-10-06-react-firebase-deploy](https://zenn.dev/yumemi_inc/articles/2020-10-06-react-firebase-deploy)
+
+FireBaseデプロイで色々使える
+
+[https://www.i-ryo.com/entry/2021/02/24/062009](https://www.i-ryo.com/entry/2021/02/24/062009)
+
+[https://github.com/ryo-i/react-hook-test/tree/c9a5cab4bb18f531e9be2723ed2255a46b2a8d2c/src](https://github.com/ryo-i/react-hook-test/tree/c9a5cab4bb18f531e9be2723ed2255a46b2a8d2c/src)
+
+Firebase read処理
