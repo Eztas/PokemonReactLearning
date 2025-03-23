@@ -6,6 +6,7 @@ import reactHooks from 'eslint-plugin-react-hooks';
 
 
 export default defineConfig([
+  // eslint設定時、デフォルトで書き込まれる内容
   { files: ["**/*.{js,mjs,cjs,jsx}"] },
   { 
     files: ["**/*.{js,mjs,cjs,jsx}"], 
@@ -15,6 +16,9 @@ export default defineConfig([
     plugins: { js }, 
     extends: ["js/recommended"] 
   },
+
+  // 自分で追加した内容
+  // useEffectで第2引数を空配列にしたときの警告を無視できるようにする
   {
     files: ['**/*.{js,jsx}'],
     plugins: {
