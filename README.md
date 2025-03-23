@@ -60,7 +60,7 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 ## コミットのリセット(commit記録上にも残らないようにする)
 
 ```
-git branch backup-ブランチ名               # バックアップ
+git branch backup-ブランチ名               # バックアップ用に新しいブランチを作成(backupコマンドやタグがあるわけではない)
 git reset HEAD^1                          # 最新コミットをリセット
 # ステージングとコミット
 git push origin test_3_eslint --force     # リモートに反映(前のコミットを上書き)
