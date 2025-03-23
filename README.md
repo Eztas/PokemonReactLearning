@@ -291,8 +291,58 @@ TypeScriptと組み合わせて型とかも検出・訂正できそう
 
 人によってバラバラになってしまいがちな記述方式に一定の統一感を出せる
 
+ESLintのインストール
+```
+npm install eslint --save-dev
+```
+
+ESLintの設定
+```
+npx eslint --init
+```
+
+コマンド入力
+```
+Ok to proceed? (y) y
+
+? How would you like to use ESLint? ... 
+  To check syntax only
+> To check syntax and find problems
+
+? What type of modules does your project use? ... 
+> JavaScript modules (import/export)
+  CommonJS (require/exports)
+  None of these
+
+? Which framework does your project use? ... 
+> React
+  Vue.js
+  None of these
+
+? Does your project use TypeScript? ... 
+> No
+  Yes
+
+? Where does your code run? ...  (Press <space> to select, <a> to toggle all, <i> to invert selection)
+√ Browser
+√ Node
+
+eslint, globals, @eslint/js, eslint-plugin-react
+? Would you like to install them now? » Yes  
+
+? Which package manager do you want to use? ... 
+> npm
+  yarn
+  pnpm
+  bun
+```
+
 参考文献
 
+ESLint設定手順
+[https://deku.posstree.com/react/eslint/](https://deku.posstree.com/react/eslint/)
+
+ESLintの意義など
 [https://zenn.dev/yhay81/articles/def73cf8a02864](https://zenn.dev/yhay81/articles/def73cf8a02864)
 
 ## デプロイはbuildフォルダで
