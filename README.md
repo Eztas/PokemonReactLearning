@@ -337,6 +337,12 @@ eslint, globals, @eslint/js, eslint-plugin-react
   bun
 ```
 
+ReactはデフォルトでもESLintがあるため、
+これを行っても完全には今回設定したESLintが反映されない可能性がある
+
+そのため、node_modulesを削除して、一度依存関係をリセットしてから、
+npm installを行い、今回の設定を反映させよう
+
 参考文献
 
 ESLint設定手順
