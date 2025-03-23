@@ -76,7 +76,7 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/08 デプロイ
 
-2025/03/10~18 テスト(jest), [https://qiita.com/yo16/items/d7dda9c8b496204fce82](https://qiita.com/yo16/items/d7dda9c8b496204fce82)
+2025/03/10~23 テスト(jest), [https://qiita.com/yo16/items/d7dda9c8b496204fce82](https://qiita.com/yo16/items/d7dda9c8b496204fce82)
 
 2025/03/11~12 エラー処理
 
@@ -86,8 +86,10 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 ->でもこれもデータベースが多数書き換えられる可能性
 
-2025/03/18~21 ファイル書き込みをもう一度試すも失敗,
+2025/03/18~23 ファイル書き込みをもう一度試すも失敗,
 このreactでのプロジェクトでは行わず, Next.jsでの利用により模索する
+
+2025/03/23 ESLintの追加
 
 # React個人的まとめ
 
