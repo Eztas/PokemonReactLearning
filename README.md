@@ -283,6 +283,18 @@ promiseオブジェクトを使うことで、順番にfetchなどの非同期�
 
 [https://qiita.com/hisashi_matsui/items/d8457284e9219f57ca6c](https://qiita.com/hisashi_matsui/items/d8457284e9219f57ca6c)
 
+## ESLintとは
+
+「どっちでも書ける記述方法のうちこっちにして」と決めたルールセットとそれに違反しているかどうかを自動検出(リント)・訂正(フォーマット)するツール
+
+TypeScriptと組み合わせて型とかも検出・訂正できそう
+
+人によってバラバラになってしまいがちな記述方式に一定の統一感を出せる
+
+参考文献
+
+[https://zenn.dev/yhay81/articles/def73cf8a02864](https://zenn.dev/yhay81/articles/def73cf8a02864)
+
 ## デプロイはbuildフォルダで
 
 publicで行うと色々公開される可能性あり
