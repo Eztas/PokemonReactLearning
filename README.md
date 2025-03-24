@@ -304,6 +304,30 @@ promiseオブジェクトを使うことで、順番にfetchなどの非同期�
 
 [https://qiita.com/hisashi_matsui/items/d8457284e9219f57ca6c](https://qiita.com/hisashi_matsui/items/d8457284e9219f57ca6c)
 
+## package.jsonとpackage-lock.json
+
+package.json は依存関係の範囲を指定する
+
+`npm install`を実行すればこのファイルを元に依存関係をインストール
+
+- プロジェクト名、バージョン、説明：プロジェクトの基本情報。
+
+- 依存関係：本番環境で必要なパッケージ（例: "react", "react-dom"）。
+
+- 開発依存関係：開発時のみ必要なパッケージ（例: "eslint", "jest"）。
+
+- スクリプト：npm run で実行可能なコマンド（例: "start", "build"）。
+
+package-lock.json は正確なバージョンをロックして一貫性を保つ役割を果たす
+
+`npm install`を実行すると生成される
+
+`npm ci`で正確なバージョン関係のインストール、他者間での環境統一に役立つらしい
+
+- インストールされたすべての依存関係とサブ依存関係の正確なバージョン。
+
+- 依存関係ツリーのフラットな構造を保存し、インストール速度と信頼性を向上。
+
 ## ESLintとは
 
 「どっちでも書ける記述方法のうちこっちにして」と決めたルールセットとそれに違反しているかどうかを自動検出(リント)・訂正(フォーマット)するツール
@@ -391,7 +415,7 @@ npm install -g firebase-tools
 
 3. `firebase login`で、Googleアカウントを選択する(webページに飛びます)
 
-4. `npm run build`でbuildフォルダの作瀬尾
+4. `npm run build`でbuildフォルダの作成
 
 5. CLIでの手順(4と5は逆でもいいらしい)
 
