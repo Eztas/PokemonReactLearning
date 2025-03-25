@@ -388,6 +388,10 @@ ReactはデフォルトでもESLintがあるため、
 そのため、node_modulesを削除して、一度依存関係をリセットしてから、
 npm installを行い、今回の設定を反映させよう
 
+eslintを最新verの9にしていたが、余計なエラーが多そう(?)
+
+eslint.config.mjsで行うのを参考にしたが、eslint.jsonにした方が良さそう(?)
+
 参考文献
 
 ESLint設定手順
