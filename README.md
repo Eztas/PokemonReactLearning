@@ -382,6 +382,12 @@ eslint, globals, @eslint/js, eslint-plugin-react
   bun
 ```
 
+```
+npm install eslint-plugin-react eslint-plugin-react-hooks --save-dev
+```
+
+結局デフォルトだと、何もルールが設定できないようなので、この辺りも入れておくと良さそう
+
 ReactはデフォルトでもESLintがあるため、
 これを行っても完全には今回設定したESLintが反映されない可能性がある
 
@@ -390,7 +396,11 @@ npm installを行い、今回の設定を反映させよう
 
 eslintを最新verの9にしていたが、余計なエラーが多そう(?)
 
-eslint.config.mjsで行うのを参考にしたが、eslint.jsonにした方が良さそう(?)
+eslint.config.mjsで行うのを参考にしたが、eslintrc.jsonにした方が良さそう(?)
+
+やはり最新にした方が良さそうなので、それで適応できるように頑張ろう
+
+もしくは、他にeslintも設定しながら開発しているものがあったので、一度をそれを触るのもありかも
 
 参考文献
 

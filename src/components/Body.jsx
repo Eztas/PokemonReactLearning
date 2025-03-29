@@ -32,7 +32,7 @@ function Body() {
           <div>ポケモンデータを取得できませんでした</div>
         ) :(      
           <div className='all-container'>
-            {pokemons.map((pokemon, index) => (
+            {pokemons.map((pokemon) => (
               showPokemon(pokemon)
             ))}
           </div>
