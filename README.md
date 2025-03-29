@@ -466,6 +466,14 @@ settings: {
 }
 ```
 
+## Prettier
+
+フォーマッター
+
+参考文献
+
+[https://kamatimaru.hatenablog.com/entry/2021/01/04/141941](https://kamatimaru.hatenablog.com/entry/2021/01/04/141941)
+
 ## デプロイはbuildフォルダで
 
 publicで行うと色々公開される可能性あり
