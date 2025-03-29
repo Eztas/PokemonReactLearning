@@ -3,7 +3,7 @@ import globals from "globals";
 import js from "@eslint/js";
 import pluginReact from "eslint-plugin-react";
 import reactHooks from 'eslint-plugin-react-hooks';
-import pluginReactJSXRuntime from "eslint-plugin-react/configs/jsx-runtime.js"; // 追加
+import pluginReactJSXRuntime from "eslint-plugin-react/configs/jsx-runtime.js"; // 'React' must be in scope when using JSX  react/react-in-jsx-scopeに対応
 
 export default defineConfig([
   // eslint設定時、デフォルトで書き込まれる内容
@@ -33,10 +33,10 @@ export default defineConfig([
     rules: {
       'react/prop-types': 'off', // PropTypesチェックを無効化, javascript版なので型に関しての忠告は今回無視
       'react-hooks/exhaustive-deps': 'off',
-      "react/react-in-jsx-scope": "off",
-      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off", // 生成AIだとこれを提案されるが全く効かない
+      "react/jsx-uses-react": "off", // 生成AIだとこれを提案されるが全く効かない
     },
   },
   pluginReact.configs.flat.recommended,
-  pluginReactJSXRuntime,
+  pluginReactJSXRuntime, // 'React' must be in scope when using JSX  react/react-in-jsx-scopeに対応
 ]);
