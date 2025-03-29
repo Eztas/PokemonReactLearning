@@ -32,6 +32,7 @@ export default defineConfig([
     },
     rules: {
       'react/prop-types': 'off', // PropTypesチェックを無効化, javascript版なので型に関しての忠告は今回無視
+      'no-unused-vars': 'off', // 未使用の変数を無視する, firebaseなど拡張用に残しているコードもある
       'react-hooks/exhaustive-deps': 'off', // useEffectで第2引数を空配列にしたときの警告を無視できるようにする
     },
   },
