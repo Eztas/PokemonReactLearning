@@ -97,7 +97,7 @@ HEADに元々プッシュされていた内容はステージング前の位置�
 
 2025/03/08 デプロイ
 
-2025/03/10~23 テスト(jest), [https://qiita.com/yo16/items/d7dda9c8b496204fce82](https://qiita.com/yo16/items/d7dda9c8b496204fce82)
+2025/03/10~29 テスト(jest), [https://qiita.com/yo16/items/d7dda9c8b496204fce82](https://qiita.com/yo16/items/d7dda9c8b496204fce82)
 
 2025/03/11~12 エラー処理
 
@@ -110,7 +110,7 @@ HEADに元々プッシュされていた内容はステージング前の位置�
 2025/03/18~23 ファイル書き込みをもう一度試すも失敗,
 このreactでのプロジェクトでは行わず, Next.jsでの利用により模索する
 
-2025/03/23 ESLintの追加
+2025/03/23~29 テストに向けてまずESLintの追加
 
 # React個人的まとめ
 
