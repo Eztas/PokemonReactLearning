@@ -336,7 +336,7 @@ TypeScriptと組み合わせて型とかも検出・訂正できそう
 
 人によってバラバラになってしまいがちな記述方式に一定の統一感を出せる
 
-ESLintのインストール
+### ESLintのインストール
 ```
 npm install eslint --save-dev
 ```
@@ -404,6 +404,67 @@ ESLintの意義など
 
 Reactのインポートに関する警告を除去するESLintについて
 [https://qiita.com/Yasushi-Mo/items/c2e259f8e2a86b79cb8a](https://qiita.com/Yasushi-Mo/items/c2e259f8e2a86b79cb8a)
+
+### files
+ESLintがどのファイルに対して特定の設定を適用するかを定義
+
+```
+{ files: ["**/*.{js,mjs,cjs,jsx}"] }
+```
+
+### plugins
+プラグインは、ESLintが標準でサポートしていないルールや機能を追加する
+
+React, TypeScript, Vueなど特定フレームワーク用のプラグイン導入
+
+```
+import reactHooks from 'eslint-plugin-react-hooks';
+plugins: {
+  'react-hooks': reactHooks,
+}
+```
+
+### extends
+他の設定ファイルや共有設定からルールセットを継承
+```
+extends: ["js/recommended"]
+```
+
+### rules
+
+コードの品質やスタイルに関する具体的なルールを設定
+
+各ルールは「エラー」「警告」「無効化」などのレベルで制御
+```
+rules: {
+  'react/prop-types': 'off', // PropTypesチェックを無効化
+  'no-unused-vars': 'off', // 未使用変数の警告を無効化
+  'react-hooks/exhaustive-deps': 'off', // useEffectの依存配列警告を無効化
+}
+```
+
+### languageOptions
+使用する言語仕様やグローバル変数など、コード環境に関するオプションを指定
+JavaScriptのバージョンや、ブラウザ・Node.jsなどで利用可能なグローバル変数（例：window, process）などを設定
+
+```
+languageOptions: {
+  globals: { ...globals.browser, ...globals.node }
+}
+```
+
+### settings
+ESLintのルール実行時に参照される共通の設定値を定義
+
+プラグインやカスタムルールが利用するための設定値を格納
+
+```
+settings: {
+  react: {
+    version: "detect",
+  },
+}
+```
 
 ## デプロイはbuildフォルダで
 
