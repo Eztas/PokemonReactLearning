@@ -16,7 +16,6 @@ function App() {
          setIsFetchError } = useContext(PokemonContext); // ポケモンのデータを格納する
 
   // reloadingをuseStateで管理とかにすると、日本語ページと英語ページで競合しそうなのでここはコンポーネント化しない
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getPokemons = () => {
     setIsReloading(true); // リロード中の状態をtrueにする
     fetch(url)
