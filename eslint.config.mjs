@@ -16,15 +16,15 @@ export default defineConfig([
     plugins: { js }, 
     extends: ["js/recommended"] 
   },
+  pluginReact.configs.flat.recommended,
 
   // 自分で追加した内容
-  // useEffectで第2引数を空配列にしたときの警告を無視できるようにする
-  // https://qiita.com/Yasushi-Mo/items/c2e259f8e2a86b79cb8a
+  pluginReactJSXRuntime, // 'React' must be in scope when using JSX  react/react-in-jsx-scopeに対応
   {
     files: ['**/*.{js,jsx}'],
     settings: {
       react: {
-        version: "detect",
+        version: "detect", // versionを自動で検知できるようにする
       },
     },
     plugins: {
@@ -32,11 +32,7 @@ export default defineConfig([
     },
     rules: {
       'react/prop-types': 'off', // PropTypesチェックを無効化, javascript版なので型に関しての忠告は今回無視
-      'react-hooks/exhaustive-deps': 'off',
-      "react/react-in-jsx-scope": "off", // 生成AIだとこれを提案されるが全く効かない
-      "react/jsx-uses-react": "off", // 生成AIだとこれを提案されるが全く効かない
+      'react-hooks/exhaustive-deps': 'off', // useEffectで第2引数を空配列にしたときの警告を無視できるようにする
     },
   },
-  pluginReact.configs.flat.recommended,
-  pluginReactJSXRuntime, // 'React' must be in scope when using JSX  react/react-in-jsx-scopeに対応
 ]);

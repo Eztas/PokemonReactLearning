@@ -394,14 +394,6 @@ ReactはデフォルトでもESLintがあるため、
 そのため、node_modulesを削除して、一度依存関係をリセットしてから、
 npm installを行い、今回の設定を反映させよう
 
-eslintを最新verの9にしていたが、余計なエラーが多そう(?)
-
-eslint.config.mjsで行うのを参考にしたが、eslintrc.jsonにした方が良さそう(?)
-
-やはり最新にした方が良さそうなので、それで適応できるように頑張ろう
-
-もしくは、他にeslintも設定しながら開発しているものがあったので、一度をそれを触るのもありかも
-
 参考文献
 
 ESLint設定手順
@@ -409,6 +401,9 @@ ESLint設定手順
 
 ESLintの意義など
 [https://zenn.dev/yhay81/articles/def73cf8a02864](https://zenn.dev/yhay81/articles/def73cf8a02864)
+
+Reactのインポートに関する警告を除去するESLintについて
+[https://qiita.com/Yasushi-Mo/items/c2e259f8e2a86b79cb8a](https://qiita.com/Yasushi-Mo/items/c2e259f8e2a86b79cb8a)
 
 ## デプロイはbuildフォルダで
 
