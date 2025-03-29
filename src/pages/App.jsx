@@ -1,11 +1,9 @@
 import Header from '../components/Header';
 import Body from '../components/Body';
 import LookMore from '../components/LookMore';
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useContext} from 'react';
 import { PokemonContext } from '../contexts/PokemonProvider';
 import { createPokemonObject } from '../api/createPokemonObject';
-//import { updateAccessLog } from '../api/useDatabase';
-import {updateAccessLog} from "../server/updateAccessLog";
 
 function App() {
 
@@ -17,26 +15,12 @@ function App() {
          setIsReloading,
          setIsFetchError } = useContext(PokemonContext); // ポケモンのデータを格納する
 
-  const [accessLog, setAccessLog] = useState("true");
-
-  const updateAccessLog = () => {
-    fetch('src/server/updateAccessLog')
-    .then(res => res.json()) 
-    .then(data => {              // data = res.json()
-      console.log(data.message)
-    })
-    .catch(error => {
-      console.log(error);
-    })
-  }
-
   // reloadingをuseStateで管理とかにすると、日本語ページと英語ページで競合しそうなのでここはコンポーネント化しない
   const getPokemons = () => {
     setIsReloading(true); // リロード中の状態をtrueにする
     fetch(url)
       .then(res => res.json()) 
       .then(data => {              // data = res.json()
-        updateAccessLog();
         createPokemonObject(data.results, setPokemons); // APIで取得したポケモンの情報に関するオブジェクト生成
         setUrl(data.next); // 次の20件(21件目から40件目)をURLにセットする
       })
@@ -54,7 +38,6 @@ function App() {
 
   return (
     <div className="app-container">
-      <div>{accessLog}</div>
       <Header />
       <div className='pokemon-container'>
         <Body />

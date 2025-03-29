@@ -57,6 +57,27 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 3行目: ローカルとリモートのブランチを紐づける
 
+## コミットのリセット(commit記録上にも残らないようにする)
+
+```
+git branch backup-ブランチ名               # バックアップ用に新しいブランチを作成(backupコマンドやタグがあるわけではない)
+git reset HEAD^1                          # 最新コミットをリセット
+# ステージングとコミット
+git push origin test_3_eslint --force     # リモートに反映(前のコミットを上書き)
+```
+
+これにより、例えば誤ってenvファイルの中身がリモートにプッシュされるようなことになった時、コミット記録上でも他人に見られないようにするのに、
+これを用いることができる
+
+```
+reset: Git の履歴や状態を特定のポイントに戻す操作
+HEAD: 今いる場所（現在のブランチの最新コミット）
+^1: 「1つ前のコミット」
+```
+これで、HEADの一個前のブランチに戻りつつ、
+HEADに元々プッシュされていた内容はステージング前の位置に戻る
+
+
 # 記録
 2025/02/28 スタート
 
@@ -76,7 +97,7 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 2025/03/08 デプロイ
 
-2025/03/10~18 テスト(jest), [https://qiita.com/yo16/items/d7dda9c8b496204fce82](https://qiita.com/yo16/items/d7dda9c8b496204fce82)
+2025/03/10~29 テスト(jest), [https://qiita.com/yo16/items/d7dda9c8b496204fce82](https://qiita.com/yo16/items/d7dda9c8b496204fce82)
 
 2025/03/11~12 エラー処理
 
@@ -86,8 +107,10 @@ git branch --set-upstream-to=origin/3_pokemon_api_use_state_effect 3_pokemon_api
 
 ->でもこれもデータベースが多数書き換えられる可能性
 
-2025/03/18~21 ファイル書き込みをもう一度試すも失敗,
+2025/03/18~23 ファイル書き込みをもう一度試すも失敗,
 このreactでのプロジェクトでは行わず, Next.jsでの利用により模索する
+
+2025/03/23~29 テストに向けてまずESLintの追加
 
 # React個人的まとめ
 
@@ -281,6 +304,168 @@ promiseオブジェクトを使うことで、順番にfetchなどの非同期�
 
 [https://qiita.com/hisashi_matsui/items/d8457284e9219f57ca6c](https://qiita.com/hisashi_matsui/items/d8457284e9219f57ca6c)
 
+## package.jsonとpackage-lock.json
+
+package.json は依存関係の範囲を指定する
+
+`npm install`を実行すればこのファイルを元に依存関係をインストール
+
+- プロジェクト名、バージョン、説明：プロジェクトの基本情報。
+
+- 依存関係：本番環境で必要なパッケージ（例: "react", "react-dom"）。
+
+- 開発依存関係：開発時のみ必要なパッケージ（例: "eslint", "jest"）。
+
+- スクリプト：npm run で実行可能なコマンド（例: "start", "build"）。
+
+package-lock.json は正確なバージョンをロックして一貫性を保つ役割を果たす
+
+`npm install`を実行すると生成される
+
+`npm ci`で正確なバージョン関係のインストール、他者間での環境統一に役立つらしい
+
+- インストールされたすべての依存関係とサブ依存関係の正確なバージョン。
+
+- 依存関係ツリーのフラットな構造を保存し、インストール速度と信頼性を向上。
+
+## ESLintとは
+
+「どっちでも書ける記述方法のうちこっちにして」と決めたルールセットとそれに違反しているかどうかを自動検出(リント)・訂正(フォーマット)するツール
+
+TypeScriptと組み合わせて型とかも検出・訂正できそう
+
+人によってバラバラになってしまいがちな記述方式に一定の統一感を出せる
+
+### ESLintのインストール
+```
+npm install eslint --save-dev
+```
+
+ESLintの設定
+```
+npx eslint --init
+```
+
+コマンド入力
+```
+Ok to proceed? (y) y
+
+? How would you like to use ESLint? ... 
+  To check syntax only
+> To check syntax and find problems
+
+? What type of modules does your project use? ... 
+> JavaScript modules (import/export)
+  CommonJS (require/exports)
+  None of these
+
+? Which framework does your project use? ... 
+> React
+  Vue.js
+  None of these
+
+? Does your project use TypeScript? ... 
+> No
+  Yes
+
+? Where does your code run? ...  (Press <space> to select, <a> to toggle all, <i> to invert selection)
+√ Browser
+√ Node
+
+eslint, globals, @eslint/js, eslint-plugin-react
+? Would you like to install them now? » Yes  
+
+? Which package manager do you want to use? ... 
+> npm
+  yarn
+  pnpm
+  bun
+```
+
+```
+npm install eslint-plugin-react eslint-plugin-react-hooks --save-dev
+```
+
+結局デフォルトだと、何もルールが設定できないようなので、この辺りも入れておくと良さそう
+
+ReactはデフォルトでもESLintがあるため、
+これを行っても完全には今回設定したESLintが反映されない可能性がある
+
+そのため、node_modulesを削除して、一度依存関係をリセットしてから、
+npm installを行い、今回の設定を反映させよう
+
+参考文献
+
+ESLint設定手順
+[https://deku.posstree.com/react/eslint/](https://deku.posstree.com/react/eslint/)
+
+ESLintの意義など
+[https://zenn.dev/yhay81/articles/def73cf8a02864](https://zenn.dev/yhay81/articles/def73cf8a02864)
+
+Reactのインポートに関する警告を除去するESLintについて
+[https://qiita.com/Yasushi-Mo/items/c2e259f8e2a86b79cb8a](https://qiita.com/Yasushi-Mo/items/c2e259f8e2a86b79cb8a)
+
+### files
+ESLintがどのファイルに対して特定の設定を適用するかを定義
+
+```
+{ files: ["**/*.{js,mjs,cjs,jsx}"] }
+```
+
+### plugins
+プラグインは、ESLintが標準でサポートしていないルールや機能を追加する
+
+React, TypeScript, Vueなど特定フレームワーク用のプラグイン導入
+
+```
+import reactHooks from 'eslint-plugin-react-hooks';
+plugins: {
+  'react-hooks': reactHooks,
+}
+```
+
+### extends
+他の設定ファイルや共有設定からルールセットを継承
+```
+extends: ["js/recommended"]
+```
+
+### rules
+
+コードの品質やスタイルに関する具体的なルールを設定
+
+各ルールは「エラー」「警告」「無効化」などのレベルで制御
+```
+rules: {
+  'react/prop-types': 'off', // PropTypesチェックを無効化
+  'no-unused-vars': 'off', // 未使用変数の警告を無効化
+  'react-hooks/exhaustive-deps': 'off', // useEffectの依存配列警告を無効化
+}
+```
+
+### languageOptions
+使用する言語仕様やグローバル変数など、コード環境に関するオプションを指定
+JavaScriptのバージョンや、ブラウザ・Node.jsなどで利用可能なグローバル変数（例：window, process）などを設定
+
+```
+languageOptions: {
+  globals: { ...globals.browser, ...globals.node }
+}
+```
+
+### settings
+ESLintのルール実行時に参照される共通の設定値を定義
+
+プラグインやカスタムルールが利用するための設定値を格納
+
+```
+settings: {
+  react: {
+    version: "detect",
+  },
+}
+```
+
 ## デプロイはbuildフォルダで
 
 publicで行うと色々公開される可能性あり
@@ -300,7 +485,7 @@ npm install -g firebase-tools
 
 3. `firebase login`で、Googleアカウントを選択する(webページに飛びます)
 
-4. `npm run build`でbuildフォルダの作瀬尾
+4. `npm run build`でbuildフォルダの作成
 
 5. CLIでの手順(4と5は逆でもいいらしい)
 
