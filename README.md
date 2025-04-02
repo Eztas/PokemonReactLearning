@@ -471,6 +471,15 @@ settings: {
 フォーマッター
 
 参考文献
+[https://qiita.com/ryome/items/1a8e643388963141112a](https://qiita.com/ryome/items/1a8e643388963141112a)
+
+## Prettierの設定
+
+```
+npm install --save-dev prettier eslint-config-prettier
+```
+
+参考文献
 
 [https://kamatimaru.hatenablog.com/entry/2021/01/04/141941](https://kamatimaru.hatenablog.com/entry/2021/01/04/141941)
 
