@@ -7,14 +7,20 @@ import pluginReactJSXRuntime from "eslint-plugin-react/configs/jsx-runtime.js"; 
 
 export default defineConfig([
   // eslint設定時、デフォルトで書き込まれる内容
-  { files: ["**/*.{js,mjs,cjs,jsx}"] },
+  { files: ["**/*.{js,mjs,cjs,jsx}"],
+    extends: [
+      'prettier', // Prettierとの競合を避けるため、必ず最後に配置
+    ],
+   },
   { 
     files: ["**/*.{js,mjs,cjs,jsx}"], 
     languageOptions: { globals: {...globals.browser, ...globals.node} } 
   },
   { files: ["**/*.{js,mjs,cjs,jsx}"], 
     plugins: { js }, 
-    extends: ["js/recommended"] 
+    extends: [
+      "js/recommended",
+    ] 
   },
   pluginReact.configs.flat.recommended,
 
